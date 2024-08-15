@@ -1,0 +1,15 @@
+[
+    { "text": "cmd: delete disk C", "type": "custom" },
+    { "text": "cmd: ERROR", "type": "custom" },
+    { "text": "cmd: node index.js --Kristy --FOCKSUTY --acula_1", "type": "custom" },
+    { "text": "cmd: npm delete activity: \"Kristy, я тебя разлюбил\"", "type": "custom" },
+    { "text": "cmd: npm delete FOCKUSTY", "type": "custom" },
+    { "text": "cmd: npm install Ai", "type": "custom" },
+    { "text": "cmd: npm install englishActivities", "type": "custom" },
+    { "text": "cmd: npm install Kristy.ts", "type": "custom" },
+    { "text": "cmd: npm install Math", "type": "custom" },
+    { "text": "cmd: npm install TheVoid.js", "type": "custom" },
+    { "text": "cmd: npm sendToKristy aDateProposal", "type": "custom" },
+    { "text": "cmd: thevoid --update", "type": "custom" },
+    { "text": "cmd: tsup src/**", "type": "custom" }
+]
