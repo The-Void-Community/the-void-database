@@ -6,7 +6,6 @@
 *.lnk
 sounds/
 music/
-names.json
 ideadb.sqlite
 config.json
 hasing.ts
