@@ -15,6 +15,6 @@
     "Обновления ${THEVOIDSBOT_REVERSE}...",
     "Обновления...",
     "Романтику...",
-    "data.json...",
+    "data/activities/*.json...",
     "Discord сервера"
 ]}
