@@ -1,205 +1,215 @@
-import type { Activity } from '../../../types/activity.types';
+import type { Activity } from "../../../types/activity.types";
 
-import ClassStandartActivityLoader from './standart-activity.loader';
-import ClassTypifiedActivityLoader from './typified-activity.loader';
-import ClassUtilityLoader from './utility.loader';
+import ClassStandartActivityLoader from "./standart-activity.loader";
+import ClassTypifiedActivityLoader from "./typified-activity.loader";
+import ClassUtilityLoader from "./utility.loader";
 
-import Logger from '../utils/logger.service';
+import Logger from "../utils/logger.service";
 
-import path from 'node:path';
-import fs from 'node:fs';
+import path from "node:path";
+import fs from "node:fs";
 
 import Formatter, { Colors } from "../utils/formatter.service";
 
-const activitiesPath = path.join('../../the-void-database/data');
+const activitiesPath = path.join("../../the-void-database/data");
 const activitiesFolders = fs
-    .readdirSync(activitiesPath)
-    .filter(file => !file.endsWith(".json"));
+	.readdirSync(activitiesPath)
+	.filter((file) => !file.endsWith(".json"));
 
 const StandartActivityLoader = new ClassStandartActivityLoader();
 const TypifiedActivityLoader = new ClassTypifiedActivityLoader();
 const UtilityLoader = new ClassUtilityLoader();
 
 const LoadedActivities: { [key: string]: Activity[] } = {
-    guild: [],
-    name: [],
-    kristy: [],
-    other: []
+	guild: [],
+	name: [],
+	kristy: [],
+	other: []
 };
 
 const LoadedUtility: {
-    banwords: any[],
-    titles: {[key: string]: string[]},
+	banwords: any[];
+	titles: { [key: string]: string[] };
 
-    [key: string]: any[] |
-    {[key: string]: any[]}
+	[key: string]: any[] | { [key: string]: any[] };
 } = {
-    banwords: [],
-    titles: {}
+	banwords: [],
+	titles: {}
 };
 
 class ActivitiesLoader {
-    private readonly Logger = new Logger('Loader').execute;
+	private readonly Logger = new Logger("Loader").execute;
 
-    private files?: string[];
-    private jsonFiles?: string[];
-    private folders?: string[];
+	private files?: string[];
+	private jsonFiles?: string[];
+	private folders?: string[];
 
-    private activityFolderPath?: string;
-    private folderPath?: string;
-    private folder?: string;
+	private activityFolderPath?: string;
+	private folderPath?: string;
+	private folder?: string;
 
-    private readonly FeatureAcitivyLoader = () => {
-        if(!this.files || !this.folderPath || !this.folder)
-            return;
+	private readonly FeatureAcitivyLoader = () => {
+		if (!this.files || !this.folderPath || !this.folder) return;
 
-        fileCicle: for(const fileName of this.files) {
-            const filePath = path.join(this.folderPath, fileName);
+		fileCicle: for (const fileName of this.files) {
+			const filePath = path.join(this.folderPath, fileName);
 
-            if(this.folder === 'typified') {
-                try {
-                    const TypifiedActivities: Activity[] = TypifiedActivityLoader.execute(filePath);
-                
-                    if(fileName === 'guilds.json')
-                        LoadedActivities.guild.push(...TypifiedActivities);
-                    else if(fileName === 'names.json')
-                        LoadedActivities.name.push(...TypifiedActivities);
-                    else
-                        LoadedActivities.other.push(...TypifiedActivities);
+			if (this.folder === "typified") {
+				try {
+					const TypifiedActivities: Activity[] =
+						TypifiedActivityLoader.execute(filePath);
 
-                    this.Logger('Загружен ' + Formatter.Colored(`${this.folder} / ${fileName}`, [Colors.yellow, Colors.yellow, Colors.green], ''), Colors.green);
-                }
-                catch (err) {
-                    console.error(err);
+					if (fileName === "guilds.json")
+						LoadedActivities.guild.push(...TypifiedActivities);
+					else if (fileName === "names.json")
+						LoadedActivities.name.push(...TypifiedActivities);
+					else LoadedActivities.other.push(...TypifiedActivities);
 
-                    this.Logger(`Файл ${fileName} не был загружен успешно`, Colors.red);
-                };
+					this.Logger(
+						"Загружен " +
+							Formatter.Colored(
+								`${this.folder} / ${fileName}`,
+								[Colors.yellow, Colors.yellow, Colors.green],
+								""
+							),
+						Colors.green
+					);
+				} catch (err) {
+					console.error(err);
 
-                continue fileCicle;
-            }
-            else {
-                continue fileCicle;
-            };
-        };
-    };
+					this.Logger(`Файл ${fileName} не был загружен успешно`, Colors.red);
+				}
 
-    private readonly ActivityLoader = () => {
-        if(!this.jsonFiles || !this.activityFolderPath)
-            return;
+				continue fileCicle;
+			} else {
+				continue fileCicle;
+			}
+		}
+	};
 
-        const folder = path.parse(this.activityFolderPath).name;
+	private readonly ActivityLoader = () => {
+		if (!this.jsonFiles || !this.activityFolderPath) return;
 
-        for(const fileName of this.jsonFiles) {
-            try {
-                const filePath = path.join(this.activityFolderPath, fileName);
-                const Activities: Activity[] = StandartActivityLoader.execute(filePath);
-                
-                LoadedActivities.other.push(...Activities);
+		const folder = path.parse(this.activityFolderPath).name;
 
-                this.Logger('Загружен ' + Formatter.Colored(`${folder} / ${fileName}`, [Colors.yellow, Colors.yellow, Colors.green], ''), Colors.green);
-            } catch (err) {
-                console.error(err);
+		for (const fileName of this.jsonFiles) {
+			try {
+				const filePath = path.join(this.activityFolderPath, fileName);
+				const Activities: Activity[] = StandartActivityLoader.execute(filePath);
 
-                this.Logger(`Файл ${fileName} не был загружен успешно`, Colors.red);
-            };
-        };
-    };
+				LoadedActivities.other.push(...Activities);
 
-    private readonly UtilityLoader = () => {
-        if(!this.jsonFiles || !this.activityFolderPath)
-            return;
+				this.Logger(
+					"Загружен " +
+						Formatter.Colored(
+							`${folder} / ${fileName}`,
+							[Colors.yellow, Colors.yellow, Colors.green],
+							""
+						),
+					Colors.green
+				);
+			} catch (err) {
+				console.error(err);
 
-        const folder = path.parse(this.activityFolderPath).name;
+				this.Logger(`Файл ${fileName} не был загружен успешно`, Colors.red);
+			}
+		}
+	};
 
-        if(folder !== 'utility')
-            return;
+	private readonly UtilityLoader = () => {
+		if (!this.jsonFiles || !this.activityFolderPath) return;
 
-        for(const fileName of this.jsonFiles) {
-            try {
-                const filePath = path.join(this.activityFolderPath, fileName);
-                const name = path.parse(filePath).name;
+		const folder = path.parse(this.activityFolderPath).name;
 
-                const data = UtilityLoader.execute(filePath);
+		if (folder !== "utility") return;
 
-                LoadedUtility[name] = data;
-                
-                this.Logger('Загружен ' + Formatter.Colored(`${folder} / ${fileName}`, [Colors.yellow, Colors.yellow, Colors.green], ''), Colors.green);
-            } catch (err) {
-                console.error(err);
+		for (const fileName of this.jsonFiles) {
+			try {
+				const filePath = path.join(this.activityFolderPath, fileName);
+				const name = path.parse(filePath).name;
 
-                this.Logger(`Файл ${fileName} не был загружен успешно`, Colors.red);
-            };
-        };
-    };
+				const data = UtilityLoader.execute(filePath);
 
-    private readonly JSONCicle = () => {
-        if(!this.jsonFiles || !this.activityFolderPath)
-            return;
+				LoadedUtility[name] = data;
 
-        const folder = path.parse(this.activityFolderPath).name;
+				this.Logger(
+					"Загружен " +
+						Formatter.Colored(
+							`${folder} / ${fileName}`,
+							[Colors.yellow, Colors.yellow, Colors.green],
+							""
+						),
+					Colors.green
+				);
+			} catch (err) {
+				console.error(err);
 
-        switch (folder) {
-            case 'activities':
-                this.ActivityLoader();
+				this.Logger(`Файл ${fileName} не был загружен успешно`, Colors.red);
+			}
+		}
+	};
 
-            case 'utility':
-                this.UtilityLoader();
+	private readonly JSONCicle = () => {
+		if (!this.jsonFiles || !this.activityFolderPath) return;
 
-            default:
-                break;
-        };
-    };
+		const folder = path.parse(this.activityFolderPath).name;
 
-    private readonly FolderCicle = () => {
-        if(!this.folders || !this.activityFolderPath)
-            return;
+		switch (folder) {
+			case "activities":
+				this.ActivityLoader();
 
-        for(const folder of this.folders) {
-            this.folderPath = path.join(this.activityFolderPath, folder);
-            this.files = fs.readdirSync(this.folderPath);
-            this.folder = folder;
+			case "utility":
+				this.UtilityLoader();
 
-            this.FeatureAcitivyLoader();
-        };
-    };
+			default:
+				break;
+		}
+	};
 
-    public readonly reload = () => {
-        this.clear();
-        this.execute();
-    };
+	private readonly FolderCicle = () => {
+		if (!this.folders || !this.activityFolderPath) return;
 
-    public readonly clear = () => {
-        for(const key in LoadedActivities) {
-            this.Logger(`Разгрузка ${key}-активностей`)
-            LoadedActivities[key] = [];
-        };
-    };
+		for (const folder of this.folders) {
+			this.folderPath = path.join(this.activityFolderPath, folder);
+			this.files = fs.readdirSync(this.folderPath);
+			this.folder = folder;
 
-    public readonly execute = () => {
-        this.Logger('Загрузка активностей');
-    
-        for(const activityFolder of activitiesFolders) {
-            this.activityFolderPath = path.join(activitiesPath, activityFolder);
-            
-            this.jsonFiles = fs
-                .readdirSync(this.activityFolderPath)
-                .filter(file => file.endsWith(".json"));
+			this.FeatureAcitivyLoader();
+		}
+	};
 
-            this.folders = fs
-                .readdirSync(this.activityFolderPath)
-                .filter(file => !file.endsWith(".json"));
+	public readonly reload = () => {
+		this.clear();
+		this.execute();
+	};
 
-            if(this.jsonFiles.length !== 0)
-                this.JSONCicle();
-            else
-                this.FolderCicle();
-        };
-    };
-};
+	public readonly clear = () => {
+		for (const key in LoadedActivities) {
+			this.Logger(`Разгрузка ${key}-активностей`);
+			LoadedActivities[key] = [];
+		}
+	};
 
-export {
-    LoadedActivities as activities,
-    LoadedUtility as utility
-};
+	public readonly execute = () => {
+		this.Logger("Загрузка активностей");
+
+		for (const activityFolder of activitiesFolders) {
+			this.activityFolderPath = path.join(activitiesPath, activityFolder);
+
+			this.jsonFiles = fs
+				.readdirSync(this.activityFolderPath)
+				.filter((file) => file.endsWith(".json"));
+
+			this.folders = fs
+				.readdirSync(this.activityFolderPath)
+				.filter((file) => !file.endsWith(".json"));
+
+			if (this.jsonFiles.length !== 0) this.JSONCicle();
+			else this.FolderCicle();
+		}
+	};
+}
+
+export { LoadedActivities as activities, LoadedUtility as utility };
 
 export default ActivitiesLoader;

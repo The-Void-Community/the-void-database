@@ -22,7 +22,7 @@
             "hash": ["./src/utility/hash.ts"],
             "random": ["./src/utility/pseudoRandom.ts"],
             
-            "index@moongoose": ["./src/m.index.ts"]
+            "index@moongoose": ["src/index.mongoose.ts"]
         }
     },
     "include": ["./**/*.ts"]

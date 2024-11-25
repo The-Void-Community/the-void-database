@@ -1,34 +1,41 @@
-import * as mIndex from './logic/mongoose/index';
-import * as mSettedCreatorsVoiceChannels from './logic/mongoose/db.settedCVC';
-import * as mMultiplatform from './logic/mongoose/db.multiplatform';
-import * as mLog from './logic/mongoose/db.log';
-import * as mIdeas from './logic/mongoose/db.idea';
-import * as mMTUOJ from './logic/mongoose/db.MTUOJ';
-import * as main from './m.index';
-import * as locale from './logic/mongoose/db.locale';
+import * as CVC from "./schemas/create-vchannels.schema";
+import * as MTU from "./schemas/msg-to-user.schema";
+import * as mutliplatform from "./schemas/db.mutliplatform";
+import * as idea from "./schemas/idea.schema";
+import * as locale from "./schemas/locale.schema";
+import * as log from "./schemas/log.schema";
 
-import * as types from './types';
-import * as mSchema from './schemas/moongoose';
+import init from "./m.init";
 
-import init from './m.init';
+import { Status, StatusType, MongoStatus } from "./types/database.types";
 
-const mongooseDatabase =
-{
-    main: main,
-    schema: mSchema,
-    index: mIndex,
-    settedCreatorsVoiceChannels: mSettedCreatorsVoiceChannels,
-    multiplatform: mMultiplatform,
-    locale: locale,
-    log: mLog,
-    ideas: mIdeas,
-    MTUOJ: mMTUOJ
+const database = {
+	CVC: {
+		database: CVC.default,
+		schema: MTU.schema
+	},
+	MTU: {
+		database: MTU.default,
+		schema: MTU.schema
+	},
+	mutliplatform: {
+		database: mutliplatform.default,
+		schema: mutliplatform.schema
+	},
+	idea: {
+		database: idea.default,
+		schema: idea.schema
+	},
+	locale: {
+		database: locale.default,
+		schema: locale.schema
+	},
+	log: {
+		database: log.default,
+		schema: log.schema
+	}
 };
 
-init();
+export default { database, init };
 
-export default
-{
-    mongooseDatabase,
-    types
-};
+export { database, init, Status, StatusType, MongoStatus };
