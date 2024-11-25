@@ -29,7 +29,8 @@ const LoadedActivities: { [key: string]: Activity[] } = {
 
 const LoadedUtility: {
     banwords: any[],
-    titles: {[key: string]: any[]},
+    titles: {[key: string]: string[]},
+
     [key: string]: any[] |
     {[key: string]: any[]}
 } = {
