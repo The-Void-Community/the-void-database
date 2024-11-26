@@ -1,0 +1,28 @@
+{
+  "name": "database",
+  "version": "0.0.0",
+  "description": "The Void's database",
+  "main": "index.ts",
+  "scripts": {
+    "dev": "tsx watch src/m.index.ts",
+    "init": "tsx watch src/m.init.ts",
+    "build": "tsup src/**",
+    "start": "node dist/index.js"
+  },
+  "keywords": [
+    "db"
+  ],
+  "author": "FOCKUSTY",
+  "license": "MIT",
+  "dependencies": {
+    "mongodb": "^6.5.0",
+    "mongoose": "^8.3.2",
+    "pnpm": "^9.0.6"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.5",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.1.1",
+    "typescript": "^5.3.3"
+  }
+}
