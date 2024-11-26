@@ -6,9 +6,10 @@
   "scripts": {
     "dev": "nodemon ./src/starter.ts",
     "start": "node ./dist/index.js",
-    "build:webpack": "webpack --mode developmen",
-    "build": "tsc && tsc --declaration",
-    "publish": "npm pack && cd dist/database/src && npm pack --dry-run && npm publish"
+    "prebuild": "rimraf dist",
+    "build": "npm run prebuild && tsc",
+
+    "publish": "npm pack && cd dist/database/src && npm pack --dry-run && npm publish --access=private"
   },
   "keywords": [
     "db"
@@ -21,6 +22,7 @@
   "devDependencies": {
     "@types/node": "^20.10.5",
     "nodemon": "^3.1.7",
+    "rimraf": "^6.0.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   }
