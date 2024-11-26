@@ -16,7 +16,7 @@ import type {
 
 export const types = mongoose.SchemaTypes;
 
-export type StatusType = 0|1;
+export type StatusType = 0 | 1;
 export type FindType = "one" | "all";
 
 export type DatabaseStatus = {
@@ -25,7 +25,7 @@ export type DatabaseStatus = {
 	data?: any;
 
 	type: StatusType;
-}
+};
 
 export type Filter<T> = FilterQuery<T>;
 export type Update<T> = UpdateQuery<T> | UpdateWithAggregationPipeline;

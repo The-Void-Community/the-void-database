@@ -2,10 +2,10 @@ import mongoose from "mongoose";
 
 import type { Model as ModelType } from "mongoose";
 import type {
-    Filter,
-    FindOptions,
-    DatabaseStatus as Status,
-    UpdateOptions
+	Filter,
+	FindOptions,
+	DatabaseStatus as Status,
+	UpdateOptions
 } from "./types/database.types";
 
 import Error from "./types/database.classes";
