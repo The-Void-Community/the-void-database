@@ -1,33 +1,56 @@
-import { DeleteResult } from "mongodb";
-import mongoose, { Model, UpdateWriteOpResult } from "mongoose";
+import mongoose from "mongoose";
+
+import type {
+	ApplySchemaOptions,
+	DefaultSchemaOptions,
+	FilterQuery,
+	ObtainDocumentType,
+	ProjectionType,
+	QueryOptions,
+	ResolveSchemaOptions,
+	SchemaDefinition,
+	SchemaDefinitionType,
+	UpdateQuery,
+	UpdateWithAggregationPipeline
+} from "mongoose";
 
 export const types = mongoose.SchemaTypes;
 
-export type StatusType = "error" | "successed";
+export type StatusType = 0|1;
 export type FindType = "one" | "all";
 
-export interface Status {
-	id?: string;
-
+export type DatabaseStatus = {
+	error?: string;
 	text: string;
-	type: StatusType;
+	data?: any;
 
-	error?: any | undefined;
-	tag?: Model<any> | string;
+	type: StatusType;
 }
 
-export interface MongoStatus {
-	id?: string;
+export type Filter<T> = FilterQuery<T>;
+export type Update<T> = UpdateQuery<T> | UpdateWithAggregationPipeline;
+export type Projection<T> = ProjectionType<T> | null | undefined;
+export type Options<T> = QueryOptions<T> | null | undefined;
 
-	text: string;
-	type: StatusType;
+export type SchemaType<
+	RawDocType = any,
+	TSchemaOptions = DefaultSchemaOptions,
+	DocType extends ApplySchemaOptions<
+		ObtainDocumentType<DocType, RawDocType, ResolveSchemaOptions<TSchemaOptions>>,
+		ResolveSchemaOptions<TSchemaOptions>
+	> = ApplySchemaOptions<
+		ObtainDocumentType<any, RawDocType, ResolveSchemaOptions<TSchemaOptions>>,
+		ResolveSchemaOptions<TSchemaOptions>
+	>
+> = SchemaDefinition<SchemaDefinitionType<RawDocType>, RawDocType> | DocType;
 
-	error?: any;
-	tag?: any;
+export type UpdateOptions<T> = {
+	filter: Filter<T>;
+	update?: Update<T>;
+};
 
-	updatedTag?: UpdateWriteOpResult;
-	deletadTag?: DeleteResult;
-}
-
-export type IfEquals<T, U, Y = unknown, N = never> =
-	(<G>() => G extends T ? 1 : 2) extends <G>() => G extends U ? 1 : 2 ? Y : N;
+export type FindOptions<T> = {
+	filter: Filter<T>;
+	projection?: Projection<T>;
+	options?: Options<T>;
+};

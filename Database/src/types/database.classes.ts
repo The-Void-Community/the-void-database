@@ -1,18 +1,23 @@
-import type { StatusType } from "./database.types";
+import type { StatusType, DatabaseStatus } from "./database.types";
 
-export class Error {
-	readonly type: StatusType = "error";
-	readonly text: string = "Возможная ошибка на стороне сервера";
+class Error implements DatabaseStatus {
+	public readonly error: string;
+	public readonly text: string;
+	public readonly type: 0 = 0;
+	public readonly data: any;
 
-	public error: any;
-
-	constructor(err: any) {
+	constructor(err: string, data?: { text?: string; data?: any }) {
 		this.error = err;
+
+		this.data = data?.data || null;
+		this.text = data?.text || "Произошла ошибка на стороне сервера";
 	}
 }
 
+export default Error;
+
 export class ErrorNotFindType {
-	readonly type: StatusType = "error";
+	readonly type: StatusType = 0;
 	readonly text: string =
 		"Введите тип one или all, возможная ошибка на стороне сервера";
 
@@ -24,7 +29,7 @@ export class ErrorNotFindType {
 }
 
 export class ErrorNotFound {
-	readonly type: StatusType = "error";
+	readonly type: StatusType = 0;
 	readonly text: string = "Не удалось найти, возможная ошибка на стороне сервера.";
 
 	public error: any;

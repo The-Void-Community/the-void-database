@@ -1,7 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 import { types } from "../index.mongoose";
 
-interface IIMultiplatform {
+interface IMultiplatform {
 	telegram_id: string;
 	discord_id: string;
 
@@ -11,7 +11,7 @@ interface IIMultiplatform {
 	password: string;
 }
 
-const schema = new Schema<IIMultiplatform>({
+const schema = new Schema<IMultiplatform>({
 	telegram_id: { type: types.String, required: true, unique: true },
 	discord_id: { type: types.String, required: true, unique: true },
 
@@ -23,4 +23,4 @@ const schema = new Schema<IIMultiplatform>({
 
 export default mongoose.model("multiplatform", schema);
 
-export { IIMultiplatform, schema };
+export { IMultiplatform, schema };

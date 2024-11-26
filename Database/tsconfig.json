@@ -13,7 +13,7 @@
         "skipLibCheck": true, 
         "baseUrl": "./",
         "paths": {
-            "db": ["./src/index.ts"],
+            "db": ["src/index.data.ts"],
             "db.idea": ["./src/db.ideas.ts"],
             "db.log": ["./src/db.log.ts"],
             "db.@scvc": ["./src/db.settedCVC.ts"],
