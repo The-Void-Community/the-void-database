@@ -2,7 +2,7 @@
     "compilerOptions": {
         "target": "ES2020",
         "module": "CommonJS",
-        "rootDir": "../",
+        "rootDir": "./",
         "outDir": "./dist",
         "removeComments": true,
         "resolveJsonModule": true,
@@ -12,18 +12,7 @@
         "strictNullChecks": true,
         "skipLibCheck": true, 
         "baseUrl": "./",
-        "paths": {
-            "db": ["src/index.data.ts"],
-            "db.idea": ["./src/db.ideas.ts"],
-            "db.log": ["./src/db.log.ts"],
-            "db.@scvc": ["./src/db.settedCVC.ts"],
-            "db.multi": ["./src/db.multiplatform.ts"],
-
-            "hash": ["./src/utility/hash.ts"],
-            "random": ["./src/utility/pseudoRandom.ts"],
-            
-            "index@moongoose": ["src/index.mongoose.ts"]
-        }
+        "paths": {}
     },
-    "include": ["./**/*.ts"]
+    "include": ["./**/*.ts", "webpack.config.js"]
 }

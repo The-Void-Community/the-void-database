@@ -1,28 +1,27 @@
 {
-  "name": "database",
+  "name": "the-void-database",
   "version": "0.0.0",
   "description": "The Void's database",
-  "main": "index.ts",
+  "main": "./src/starter.ts",
   "scripts": {
-    "dev": "tsx watch src/m.index.ts",
-    "init": "tsx watch src/m.init.ts",
-    "build": "tsup src/**",
-    "start": "node dist/index.js"
+    "dev": "nodemon ./src/starter.ts",
+    "start": "node ./dist/index.js",
+    "build:webpack": "webpack --mode developmen",
+    "build": "tsc && tsc --declaration",
+    "publish": "npm pack && cd dist/database/src && npm pack --dry-run && npm publish"
   },
   "keywords": [
     "db"
   ],
-  "author": "FOCKUSTY",
+  "author": "thevoidcommunity",
   "license": "MIT",
   "dependencies": {
-    "mongodb": "^6.5.0",
-    "mongoose": "^8.3.2",
-    "pnpm": "^9.0.6"
+    "mongoose": "^8.3.2"
   },
   "devDependencies": {
     "@types/node": "^20.10.5",
+    "nodemon": "^3.1.7",
     "ts-node": "^10.9.2",
-    "tsx": "^4.1.1",
     "typescript": "^5.3.3"
   }
 }

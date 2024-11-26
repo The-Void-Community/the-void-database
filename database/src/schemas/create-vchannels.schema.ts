@@ -2,13 +2,13 @@ import mongoose, { Schema } from "mongoose";
 import { types } from "../index.mongoose";
 
 interface ICVC {
-	guildId: string;
-	channelId: string;
+	guild_id: string;
+	channel_id: string;
 }
 
 const schema = new Schema<ICVC>({
-	guildId: { type: types.String, required: true },
-	channelId: { type: types.String, required: true }
+	guild_id: { type: types.String, required: true },
+	channel_id: { type: types.String, required: true }
 });
 
 export default mongoose.model("create-voice-channels", schema);
