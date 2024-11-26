@@ -14,8 +14,6 @@ class Error implements DatabaseStatus {
 	}
 }
 
-export default Error;
-
 export class ErrorNotFindType {
 	readonly type: StatusType = 0;
 	readonly text: string =
@@ -38,3 +36,5 @@ export class ErrorNotFound {
 		this.error = err;
 	}
 }
+
+export default Error;

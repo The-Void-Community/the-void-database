@@ -1,6 +1,6 @@
-import type { Status, MongoStatus } from "./types/database.types";
+import type { DatabaseStatus as Status } from "./types/database.types";
 
-import { Error } from "./types/database.classes";
+import Error from "./types/database.classes";
 
 import mongoose from "mongoose";
 
@@ -9,51 +9,51 @@ export const types = mongoose.SchemaTypes;
 export const errorNotFound: Status = {
 	text: "Не удалось найти",
 
-	type: "error",
 	error: "Не удалось найти",
-	tag: undefined
+	type: 0,
+	data: undefined
 };
 
 export const errorNotFindType: Status = {
 	text: "Введите тип findOne или findAll",
 
-	type: "error",
 	error: "Введите тип findOne или findAll",
-	tag: undefined
+	type: 0,
+	data: undefined
 };
 
-export const deleteModel = async (name: string): Promise<MongoStatus> => {
+export const deleteModel = async (name: string): Promise<Status> => {
 	try {
 		const data = mongoose.deleteModel(name);
 
 		return {
 			text: `Успешно удалена модель ${name}`,
-			type: "successed",
-			tag: data
+			type: 0,
+			data: data
 		};
-	} catch (err) {
+	} catch (err: any) {
 		console.log(err);
 
 		return new Error(err);
 	}
 };
 
-export const getAllModels = async (): Promise<MongoStatus> => {
+export const getAllModels = async (): Promise<Status> => {
 	try {
 		const models: string[] = mongoose.modelNames();
 
 		if (!models)
 			return {
 				text: "Произошла какая-то ошибка, возможно, таблиц не существует",
-				type: "error"
+				type: 0
 			};
 
 		return {
 			text: "Успешно найдены таблицы",
-			type: "successed",
-			tag: models
+			type: 0,
+			data: models
 		};
-	} catch (err) {
+	} catch (err: any) {
 		console.error(err);
 
 		return new Error(err);
