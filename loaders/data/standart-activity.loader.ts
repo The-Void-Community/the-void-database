@@ -1,5 +1,5 @@
-import type { Activity } from "../../../types/activity.types";
-import TVConsts from "../../../data/constants.json";
+import type { Activity } from "../../types/activity.types";
+import TVConsts from "../../data/constants.json";
 import Formatter from "../utils/formatter.service";
 
 const THEVOIDs_CONSTANTS: { [key: string]: string } = TVConsts;

@@ -1,7 +1,7 @@
 import path from "path";
 import fs from "fs";
 
-import Logger from "../utils/logger.service";
+import Logger from "fock-logger";
 import Formatter, { Colors } from "../utils/formatter.service";
 
 const dataPath = path.join("../../the-void-database/data");

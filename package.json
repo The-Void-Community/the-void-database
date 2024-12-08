@@ -3,23 +3,19 @@
   "version": "0.0.0",
   "description": "The Void's database",
   "main": "./src/starter.ts",
-  "scripts": {
-    "dev": "nodemon ./src/starter.ts",
-    "start": "node ./dist/index.js",
-    "prebuild": "rimraf dist",
-    "build": "npm run prebuild && tsc",
-
-    "publish": "npm pack && cd dist/database/src && npm pack --dry-run && npm publish --access=private"
-  },
+  "scripts": {},
   "keywords": [
     "db"
   ],
   "author": "thevoidcommunity",
   "license": "MIT",
   "dependencies": {
-    "mongoose": "^8.3.2"
+    "fock-logger": "^0.4.2-a",
+    "mongoose": "^8.3.2",
+    "node": "^22.12.0"
   },
   "devDependencies": {
+    "@types/mongoose": "^5.11.97",
     "@types/node": "^20.10.5",
     "nodemon": "^3.1.7",
     "rimraf": "^6.0.1",

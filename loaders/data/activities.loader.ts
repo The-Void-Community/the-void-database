@@ -1,10 +1,10 @@
-import type { Activity } from "../../../types/activity.types";
+import type { Activity } from "../../types/activity.types";
 
 import ClassStandartActivityLoader from "./standart-activity.loader";
 import ClassTypifiedActivityLoader from "./typified-activity.loader";
 import ClassUtilityLoader from "./utility.loader";
 
-import Logger from "../utils/logger.service";
+import Logger from "fock-logger";
 
 import path from "node:path";
 import fs from "node:fs";
