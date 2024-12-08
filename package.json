@@ -1,6 +1,6 @@
 {
   "name": "the-void-database",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "The Void's database",
   "main": "./src/starter.ts",
   "scripts": {
@@ -12,6 +12,7 @@
   "author": "thevoidcommunity",
   "license": "MIT",
   "dependencies": {
+    "fock-builder": "^1.0.2-beta",
     "fock-logger": "^0.4.2-a",
     "mongoose": "^8.3.2",
     "node": "^22.12.0"
@@ -19,7 +20,6 @@
   "devDependencies": {
     "@types/mongoose": "^5.11.97",
     "@types/node": "^20.10.5",
-    "fock-builder": "^1.0.1-beta",
     "nodemon": "^3.1.7",
     "rimraf": "^6.0.1",
     "ts-node": "^10.9.2",
