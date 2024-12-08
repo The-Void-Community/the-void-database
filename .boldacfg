@@ -1,0 +1,53 @@
+{
+    "dirs": [
+        "data",
+
+        [ "data", "activities" ],
+        [ "data", "feature-activities" ],
+        [ "data", "feature-activities", "kristy" ],
+        [ "data", "feature-activities", "typified" ],
+        [ "data", "utility" ]
+    ],
+
+    "fsource": [
+
+    ],
+
+    "fbuild": [
+        ".gitignore",
+        ".gitattributes",
+        
+        "package.json",
+
+        [ "data", "constants.json" ],
+        [ "data", "download.json" ],
+        [ "data", "idea.json" ],
+        [ "data", "names.json" ],
+
+        [ "data", "activities", "cmd.json" ],
+        [ "data", "activities", "date.json" ],
+        [ "data", "activities", "develop.json" ],
+        [ "data", "activities", "english.json" ],
+        [ "data", "activities", "fockusty.json" ],
+        [ "data", "activities", "info-of-the-void.json" ],
+        [ "data", "activities", "korean.json" ],
+        [ "data", "activities", "love.json" ],
+        [ "data", "activities", "one-word.json" ],
+        [ "data", "activities", "question.json" ],
+        [ "data", "activities", "say.json" ],
+
+        [ "data", "feature-activities", "kristy", "kristy.json" ],
+        [ "data", "feature-activities", "typified", "custom.json" ],
+        [ "data", "feature-activities", "typified", "guilds.json" ],
+        [ "data", "feature-activities", "typified", "listening.json" ],
+        [ "data", "feature-activities", "typified", "names.json" ],
+        [ "data", "feature-activities", "typified", "play.json" ],
+        [ "data", "feature-activities", "typified", "watching.json" ],
+
+        [ "data", "utility", "banwords.json" ],
+        [ "data", "utility", "titiles.json" ]
+    ],
+
+    "build": "./dist",
+    "source": "./"
+}

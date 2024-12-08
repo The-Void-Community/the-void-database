@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "description": "The Void's database",
   "main": "./src/starter.ts",
-  "scripts": {},
+  "scripts": {
+    "build": "tsc"
+  },
   "keywords": [
     "db"
   ],
@@ -17,6 +19,7 @@
   "devDependencies": {
     "@types/mongoose": "^5.11.97",
     "@types/node": "^20.10.5",
+    "fock-builder": "^1.0.1-beta",
     "nodemon": "^3.1.7",
     "rimraf": "^6.0.1",
     "ts-node": "^10.9.2",
