@@ -1,8 +1,8 @@
 {
-  "name": "the-void-database",
+  "name": "@thevoidcommunity/the-void-database",
   "version": "0.0.1",
   "description": "The Void's database",
-  "main": "./src/starter.ts",
+  "main": "./index.js",
   "scripts": {
     "build": "tsc"
   },
