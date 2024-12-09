@@ -11,5 +11,7 @@ export {
     ObjectsLoader,
     StandartActivityLoader,
     TypifiedActivityLoader,
-    UtilityLoader
+    UtilityLoader,
+
+    Constants
 };
