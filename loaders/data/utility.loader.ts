@@ -1,8 +1,8 @@
-import Formatter from "../utils/formatter.service";
+import Formatter from "f-formatter";
 
 class UtilityLoader {
 	public execute = (path: string): any[] | { [key: string]: any[] } => {
-		const file = Formatter.FromJSONwithPath(path);
+		const file = new Formatter().FromJSONWithPath(path);
 		let data: any[] | { [key: string]: any[] };
 
 		if (Array.isArray(file)) {

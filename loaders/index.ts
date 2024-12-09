@@ -4,6 +4,8 @@ import StandartActivityLoader from "./data/standart-activity.loader";
 import TypifiedActivityLoader from "./data/typified-activity.loader";
 import UtilityLoader from "./data/utility.loader";
 
+import Constants from "./utils/constants.service";
+
 export {
     ActivitiesLoader,
     ObjectsLoader,

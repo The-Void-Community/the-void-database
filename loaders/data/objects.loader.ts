@@ -2,7 +2,7 @@ import path from "path";
 import fs from "fs";
 
 import Logger from "fock-logger";
-import Formatter, { Colors } from "../utils/formatter.service";
+import Formatter, { Colors } from "f-formatter";
 
 const dataPath = path.join(__dirname, "../", "../", "data");
 const files = fs.readdirSync(dataPath).filter((file) => file.endsWith(".json"));
@@ -20,7 +20,7 @@ class ObjectsLoader {
 		this.Logger("Загрузка объектов");
 
 		for (const fileName of files) {
-			const file = Formatter.FromJSONwithPath(`${dataPath}\\${fileName}`);
+			const file = new Formatter().FromJSONWithPath(`${dataPath}\\${fileName}`);
 
 			objects[fileName.replace(".json", "")] = file;
 			this.Logger(`Загружен ${`${fileName}`}`, Colors.green);

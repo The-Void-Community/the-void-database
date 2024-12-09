@@ -1,12 +1,12 @@
 import type { Activity } from "../../types/activity.types";
 import TVConsts from "../../data/constants.json";
-import Formatter from "../utils/formatter.service";
+import Formatter from "f-formatter";
 
 const THEVOIDs_CONSTANTS: { [key: string]: string } = TVConsts;
 
 class TypifiedActivityLoader {
 	public execute = (path: string): Activity[] => {
-		const file = Formatter.FromJSONwithPath(path);
+		const file = new Formatter().FromJSONWithPath(path);
 
 		const activities = [];
 

@@ -9,7 +9,7 @@ import Logger from "fock-logger";
 import path from "node:path";
 import fs from "node:fs";
 
-import Formatter, { Colors } from "../utils/formatter.service";
+import ClassFormatter, { Colors } from "f-formatter";
 
 const activitiesPath = path.join(__dirname, "../", "../", "data");
 const activitiesFolders = fs
@@ -19,6 +19,7 @@ const activitiesFolders = fs
 const StandartActivityLoader = new ClassStandartActivityLoader();
 const TypifiedActivityLoader = new ClassTypifiedActivityLoader();
 const UtilityLoader = new ClassUtilityLoader();
+const Formatter = new ClassFormatter();
 
 const LoadedActivities: { [key: string]: Activity[] } = {
 	guild: [],
