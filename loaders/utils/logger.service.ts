@@ -1,6 +1,6 @@
-import { Colors } from "./formatter.service";
-import { LoggerName } from "fock-logger/loggers.types";
 import Logger from 'fock-logger';
+import { LoggerName } from "fock-logger/loggers.types";
+import { Colors } from "./formatter.service";
 
 const LoggersNames: {
 	[key: LoggerName<string>]: { name: string; colors: [Colors, Colors] };

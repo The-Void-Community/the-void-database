@@ -12,7 +12,7 @@ class Constants {
 	}
 
 	public readonly execute = () => {
-		const filePath = path.join("../../the-void-database/data/constants.json");
+		const filePath = path.join(__dirname, "../", "../", "data", "constants.json");
 
 		fs.writeFileSync(
 			filePath,

@@ -11,7 +11,7 @@ import fs from "node:fs";
 
 import Formatter, { Colors } from "../utils/formatter.service";
 
-const activitiesPath = path.join("../../the-void-database/data");
+const activitiesPath = path.join(__dirname, "../", "../", "data");
 const activitiesFolders = fs
 	.readdirSync(activitiesPath)
 	.filter((file) => !file.endsWith(".json"));

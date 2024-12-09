@@ -4,7 +4,7 @@ import fs from "fs";
 import Logger from "fock-logger";
 import Formatter, { Colors } from "../utils/formatter.service";
 
-const dataPath = path.join("../../the-void-database/data");
+const dataPath = path.join(__dirname, "../", "../", "data");
 const files = fs.readdirSync(dataPath).filter((file) => file.endsWith(".json"));
 
 const objects: { [key: string]: any[] } = {
