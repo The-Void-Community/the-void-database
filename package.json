@@ -13,7 +13,7 @@
   "license": "MIT",
   "dependencies": {
     "fock-builder": "^1.0.2-beta",
-    "fock-logger": "^0.4.2-a",
+    "fock-logger": "^0.4.4",
     "mongoose": "^8.3.2",
     "node": "^22.12.0"
   },
