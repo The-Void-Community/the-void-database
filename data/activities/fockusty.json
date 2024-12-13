@@ -1,10 +1,14 @@
 [
+    { "text": "FOCKUSTY & {FOCKUSTY_REAL-NAME} это два разных?", "type": "custom" },
     { "text": "FOCKUSTY & {FOCKUSTY_REAL-NAME} это один человек.", "type": "custom" },
     { "text": "By FOCKUSTY", "type": "custom" },
     { "text": "By FOCKUSTY~", "type": "custom" },
     { "text": "FOCKUSTY - человек, познавший искусство фокуса и концентрации", "type": "custom" },
     { "text": "FOCKUSTY какой-то странный...", "type": "custom" },
-    { "text": "FOCKUSTY не признается", "type": "custom" },
-    { "text": "FOCKUSTY уже не скажет: \"Я люблю тебя\"", "type": "custom" },
-    { "text": "FOCKUSTY, ты мразь !", "type": "custom" }
+    { "text": "FOCKUSTY !!!ПРИЗНАЛСЯ!!!", "type": "custom" },
+    { "text": "FOCKUSTY - Цветок!", "type": "custom" },
+    { "text": "FOCKUSTY нравится Рената", "type": "custom" },
+    { "text": "FOCKUSTY, а где депрессия ?", "type": "custom" },
+    { "text": "FOCKUSTY сказал: \"Я люблю тебя\"", "type": "custom" },
+    { "text": "FOCKUSTY, ты солнышко !", "type": "custom" }
 ]
