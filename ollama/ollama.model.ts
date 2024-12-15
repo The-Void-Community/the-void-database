@@ -25,7 +25,7 @@ class Ollama {
         if (typeof promt === "string")
             return this._ollama.chat({ ...req, messages: [{ role, content: promt }] });
 
-        return this._ollama.chat({ ...promt, stream: true });
+        return this._ollama.chat({ ...promt, stream: true, model: req.model, options: req.options });
     }
 
     get ollama(): OllamaAi {
