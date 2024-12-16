@@ -16,5 +16,5 @@ const LoggersNames: {
 
 for (const key in LoggersNames) {
 	const logger = LoggersNames[key];
-	new Logger(logger.name, logger.colors);
+	new Logger(logger.name, { colors: logger.colors });
 };

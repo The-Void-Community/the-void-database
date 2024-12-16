@@ -23,7 +23,7 @@ class ObjectsLoader {
 			const file = new Formatter().FromJSONWithPath(`${dataPath}\\${fileName}`);
 
 			objects[fileName.replace(".json", "")] = file;
-			this.Logger(`Загружен ${`${fileName}`}`, Colors.green);
+			this.Logger(`Загружен ${`${fileName}`}`, { color: Colors.green });
 		}
 
 		return objects;
