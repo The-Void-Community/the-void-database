@@ -6,8 +6,8 @@ import type {
 const req: ChatRequest = {
     model: "llama3.2",
     options: {
-        num_gpu: 2,
-        num_ctx: 2
+        num_gpu: 0.5,
+        num_ctx: 1
     }
 };
 
