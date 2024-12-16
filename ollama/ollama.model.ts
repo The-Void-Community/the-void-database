@@ -3,17 +3,15 @@ import type {
     ChatRequest
 } from 'ollama';
 
-const req: ChatRequest & { stream: true } = {
+const req: ChatRequest = {
     model: "llama3.2",
-    stream: true,
     options: {
         num_gpu: 2,
-        num_ctx: 4
+        num_ctx: 2
     }
 };
 
 const role = "user";
-
 const ollama = new OllamaAi();
 
 class Ollama {
@@ -23,9 +21,16 @@ class Ollama {
 
     public chat(promt: string|ChatRequest) {
         if (typeof promt === "string")
-            return this._ollama.chat({ ...req, messages: [{ role, content: promt }] });
+            return this._ollama.chat({ model: req.model, messages: [{ role, content: promt }] });
 
-        return this._ollama.chat({ ...promt, stream: true, model: req.model, options: req.options });
+        return this._ollama.chat({
+            model: req.model,
+            options: req.options,
+            messages: promt.messages,
+            format: promt.format,
+            keep_alive: promt.keep_alive,
+            tools: promt.tools
+        });
     }
 
     get ollama(): OllamaAi {
