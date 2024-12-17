@@ -1,4 +1,4 @@
-import Logger from 'fock-logger';
+import Logger from "fock-logger";
 import { LoggerName } from "fock-logger/loggers.types";
 import { Colors } from "f-formatter";
 
@@ -17,4 +17,4 @@ const LoggersNames: {
 for (const key in LoggersNames) {
 	const logger = LoggersNames[key];
 	new Logger(logger.name, { colors: logger.colors });
-};
+}

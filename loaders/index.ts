@@ -7,11 +7,10 @@ import UtilityLoader from "./data/utility.loader";
 import Constants from "./utils/constants.service";
 
 export {
-    ActivitiesLoader,
-    ObjectsLoader,
-    StandartActivityLoader,
-    TypifiedActivityLoader,
-    UtilityLoader,
-
-    Constants
+	ActivitiesLoader,
+	ObjectsLoader,
+	StandartActivityLoader,
+	TypifiedActivityLoader,
+	UtilityLoader,
+	Constants
 };

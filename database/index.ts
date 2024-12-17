@@ -3,9 +3,6 @@ import Models from "./models.database";
 
 import { database } from "./index.data";
 
-export {
-    database,
-    Database
-};
+export { database, Database };
 
-export default Models
+export default Models;

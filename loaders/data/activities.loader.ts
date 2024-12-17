@@ -78,7 +78,9 @@ class ActivitiesLoader {
 				} catch (err) {
 					console.error(err);
 
-					this.Logger(`Файл ${fileName} не был загружен успешно`, { color: Colors.red });
+					this.Logger(`Файл ${fileName} не был загружен успешно`, {
+						color: Colors.red
+					});
 				}
 
 				continue fileCicle;
@@ -112,7 +114,9 @@ class ActivitiesLoader {
 			} catch (err) {
 				console.error(err);
 
-				this.Logger(`Файл ${fileName} не был загружен успешно`, { color: Colors.red });
+				this.Logger(`Файл ${fileName} не был загружен успешно`, {
+					color: Colors.red
+				});
 			}
 		}
 	};
@@ -145,7 +149,9 @@ class ActivitiesLoader {
 			} catch (err) {
 				console.error(err);
 
-				this.Logger(`Файл ${fileName} не был загружен успешно`, { color: Colors.red });
+				this.Logger(`Файл ${fileName} не был загружен успешно`, {
+					color: Colors.red
+				});
 			}
 		}
 	};

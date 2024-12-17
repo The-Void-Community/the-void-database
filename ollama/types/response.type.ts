@@ -1,12 +1,12 @@
 import { ChatResponse } from "ollama";
 
 type Response = {
-    ollama: ChatResponse,
+	ollama: ChatResponse;
 
-    message: string,
-    input: string,
+	message: string;
+	input: string;
 
-    type: 0|1
+	type: 0 | 1;
 };
 
 export { Response };
