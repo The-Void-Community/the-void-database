@@ -15,6 +15,8 @@
         
         "package.json",
 
+        [ "ollama", "settings.json" ],
+
         [ "data", "constants.json" ],
         [ "data", "download.json" ],
         [ "data", "idea.json" ],
@@ -49,6 +51,8 @@
         ".gitattributes",
         
         "package.json",
+
+        [ "ollama", "settings.json" ],
 
         [ "data", "constants.json" ],
         [ "data", "download.json" ],
