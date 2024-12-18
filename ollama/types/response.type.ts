@@ -1,12 +1,11 @@
-import { ChatResponse } from "ollama";
+import type { ChatResponse } from "ollama";
+import type { ModelVersion } from './ollama.types';
 
-type Response = {
-	ollama: ChatResponse;
-
-	message: string;
-	input: string;
-
+type OllamaResponse<T = ChatResponse> = {
+	model: ModelVersion;
+	ollama?: T;
+	text: string;
 	type: 0 | 1;
 };
 
-export { Response };
+export { OllamaResponse };

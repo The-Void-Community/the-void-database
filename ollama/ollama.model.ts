@@ -1,7 +1,8 @@
 import "./init.ollama";
 
-import { Ollama as OllamaAi } from "ollama";
+import { ChatResponse, Ollama as OllamaAi } from "ollama";
 import type { OllamaRequest, Settings } from "./types/ollama.types";
+import type { OllamaResponse } from "./types/response.type";
 
 const settings: Settings = {
 	model: "TheVoid",
@@ -36,18 +37,38 @@ class Ollama {
 				: [];
 	}
 
-	public async chat(promt: string | OllamaRequest) {
-		if (typeof promt === "string")
-			return await this._ollama.chat({
-				...this._data,
-				messages: [...this._add_messages, { role, content: promt }]
-			});
-
-		return await this._ollama.chat({
-			...this._data,
-			...promt,
-			messages: [...this._add_messages, ...(promt.messages || [])]
-		});
+	public chat(promt: string | OllamaRequest): OllamaResponse<Promise<ChatResponse>> {
+		try {
+			if (typeof promt === "string")
+				return {
+					model: this._data.model,
+					ollama: this._ollama.chat({
+						...this._data,
+						messages: [...this._add_messages, { role, content: promt }]
+					}),
+					text: "Запрос успешно отправлен",
+					type: 1
+				}
+	
+			return {
+				model: promt.model || this._data.model,
+				ollama: this._ollama.chat({
+					...this._data,
+					...promt,
+					messages: [...this._add_messages, ...(promt.messages || [])]
+				}),
+				text: "Запрос успешно отправлен",
+				type: 1
+			};
+		} catch (err) {
+			console.error(err);
+			
+			return {
+				model: this._data.model,
+				text: "Была получена ошибка.",
+				type: 0
+			};
+		}
 	}
 
 	get ollama(): OllamaAi {
