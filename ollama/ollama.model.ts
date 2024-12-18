@@ -48,8 +48,8 @@ class Ollama {
 					}),
 					text: "Запрос успешно отправлен",
 					type: 1
-				}
-	
+				};
+
 			return {
 				model: promt.model || this._data.model,
 				ollama: this._ollama.chat({
@@ -62,7 +62,7 @@ class Ollama {
 			};
 		} catch (err) {
 			console.error(err);
-			
+
 			return {
 				model: this._data.model,
 				text: "Была получена ошибка.",

@@ -1,5 +1,5 @@
 import type { ChatResponse } from "ollama";
-import type { ModelVersion } from './ollama.types';
+import type { ModelVersion } from "./ollama.types";
 
 type OllamaResponse<T = ChatResponse> = {
 	model: ModelVersion;
