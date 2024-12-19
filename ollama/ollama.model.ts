@@ -55,6 +55,7 @@ class Ollama {
 				ollama: this._ollama.chat({
 					...this._data,
 					...promt,
+					model: promt.model || this._data.model,
 					messages: [...this._add_messages, ...(promt.messages || [])]
 				}),
 				text: "Запрос успешно отправлен",
