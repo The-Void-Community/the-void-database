@@ -1,6 +1,6 @@
 {
   "name": "@thevoidcommunity/the-void-database",
-  "version": "1.0.1-alpha.1",
+  "version": "1.0.0-alpha.1",
   "description": "The Void's database",
   "main": "./index.js",
   "scripts": {
