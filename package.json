@@ -1,6 +1,6 @@
 {
   "name": "@thevoidcommunity/the-void-database",
-  "version": "0.3.7-alpha.1",
+  "version": "0.3.6-alpha.1",
   "description": "The Void's database",
   "main": "./index.js",
   "scripts": {
@@ -13,7 +13,7 @@
   "license": "MIT",
   "dependencies": {
     "f-formatter": "^0.3.1",
-    "fock-builder": "^1.1.0-beta",
+    "fock-builder": "^1.0.2-beta",
     "fock-logger": "^2.0.5",
     "mongoose": "^8.3.2",
     "node": "^22.12.0",
