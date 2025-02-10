@@ -1,9 +1,9 @@
 import * as database from "./database/index";
 import * as loaders from "./loaders/index";
-import * as ollama from "./ollama/index";
+import * as ai from "./ai";
 
 export = {
-	ollama,
+	ai,
 	database,
 	loaders
 };
