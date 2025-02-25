@@ -10,30 +10,30 @@ import init from "./m.init";
 import { StatusType, DatabaseStatus } from "./types/database.types";
 
 const database = {
-	CVC: {
-		database: CVC.default,
-		schema: MTU.schema
-	},
-	MTU: {
-		database: MTU.default,
-		schema: MTU.schema
-	},
-	mutliplatform: {
-		database: mutliplatform.default,
-		schema: mutliplatform.schema
-	},
-	idea: {
-		database: idea.default,
-		schema: idea.schema
-	},
-	locale: {
-		database: locale.default,
-		schema: locale.schema
-	},
-	log: {
-		database: log.default,
-		schema: log.schema
-	}
+  CVC: {
+    database: CVC.default,
+    schema: MTU.schema
+  },
+  MTU: {
+    database: MTU.default,
+    schema: MTU.schema
+  },
+  mutliplatform: {
+    database: mutliplatform.default,
+    schema: mutliplatform.schema
+  },
+  idea: {
+    database: idea.default,
+    schema: idea.schema
+  },
+  locale: {
+    database: locale.default,
+    schema: locale.schema
+  },
+  log: {
+    database: log.default,
+    schema: log.schema
+  }
 };
 
 export default { database, init };

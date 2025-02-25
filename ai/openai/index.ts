@@ -1,5 +1,3 @@
 import Ai from "./openai";
 
-export {
-    Ai
-};
+export { Ai };

@@ -5,29 +5,26 @@ import Formatter from "f-formatter";
 const THEVOIDs_CONSTANTS: ConstantsTypes = TVConsts;
 
 class TypifiedActivityLoader {
-	public execute = (path: string): Activity[] => {
-		const file = new Formatter().FromJSONWithPath(path);
+  public execute = (path: string): Activity[] => {
+    const file = new Formatter().FromJSONWithPath(path);
 
-		const activities = [];
+    const activities = [];
 
-		for (const activity of file.activities) {
-			let activityText: string = activity;
-			
-			for (const k in THEVOIDs_CONSTANTS) {
-				const key = k as (keyof typeof THEVOIDs_CONSTANTS);
+    for (const activity of file.activities) {
+      let activityText: string = activity;
 
-				if (activityText.indexOf(`\$\{${key}\}`) !== -1)
-					activityText = activityText.replace(
-						`\$\{${key}\}`,
-						THEVOIDs_CONSTANTS[key]
-					);
-			}
+      for (const k in THEVOIDs_CONSTANTS) {
+        const key = k as keyof typeof THEVOIDs_CONSTANTS;
 
-			activities.push({ text: activityText, type: file.type });
-		}
+        if (activityText.indexOf(`\$\{${key}\}`) !== -1)
+          activityText = activityText.replace(`\$\{${key}\}`, THEVOIDs_CONSTANTS[key]);
+      }
 
-		return activities;
-	};
+      activities.push({ text: activityText, type: file.type });
+    }
+
+    return activities;
+  };
 }
 
 export default TypifiedActivityLoader;
