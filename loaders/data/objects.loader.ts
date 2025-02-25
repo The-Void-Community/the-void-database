@@ -7,7 +7,11 @@ import Formatter, { Colors } from "f-formatter";
 const dataPath = path.join(__dirname, "../", "../", "data");
 const files = fs.readdirSync(dataPath).filter((file) => file.endsWith(".json"));
 
-const objects: { [key: string]: any[] } = {
+const objects: {
+	idea: { idea: string, ideaDetail: string }[],
+	download: string[],
+	names: string[]
+ } = {
 	download: [],
 	idea: [],
 	names: []
@@ -21,8 +25,9 @@ class ObjectsLoader {
 
 		for (const fileName of files) {
 			const file = new Formatter().FromJSONWithPath(`${dataPath}\\${fileName}`);
+			const name = fileName.replace(".json", "") as (keyof typeof objects);
 
-			objects[fileName.replace(".json", "")] = file;
+			objects[name] = file;
 			this.Logger(`Загружен ${`${fileName}`}`, { color: Colors.green });
 		}
 

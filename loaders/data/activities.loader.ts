@@ -21,7 +21,12 @@ const TypifiedActivityLoader = new ClassTypifiedActivityLoader();
 const UtilityLoader = new ClassUtilityLoader();
 const Formatter = new ClassFormatter();
 
-const LoadedActivities: { [key: string]: Activity[] } = {
+const LoadedActivities: {
+	guild: Activity[],
+	name: Activity[],
+	kristy: Activity[],
+	other: Activity[]
+} = {
 	guild: [],
 	name: [],
 	kristy: [],
@@ -29,10 +34,8 @@ const LoadedActivities: { [key: string]: Activity[] } = {
 };
 
 const LoadedUtility: {
-	banwords: any[];
+	banwords: string[];
 	titles: { [key: string]: string[] };
-
-	[key: string]: any[] | { [key: string]: any[] };
 } = {
 	banwords: [],
 	titles: {}
@@ -131,11 +134,14 @@ class ActivitiesLoader {
 		for (const fileName of this.jsonFiles) {
 			try {
 				const filePath = path.join(this.activityFolderPath, fileName);
-				const name = path.parse(filePath).name;
+				const name = path.parse(filePath).name as (keyof typeof LoadedUtility);
 
 				const data = UtilityLoader.execute(filePath);
 
-				LoadedUtility[name] = data;
+				if (!Array.isArray(data) && name === "titles")
+					LoadedUtility[name] = data;
+				else if (Array.isArray(data) && name === "banwords")
+					LoadedUtility[name] = data;
 
 				this.Logger(
 					"Загружен " +
@@ -191,7 +197,9 @@ class ActivitiesLoader {
 	};
 
 	public readonly clear = () => {
-		for (const key in LoadedActivities) {
+		for (const k in LoadedActivities) {
+			const key = k as (keyof typeof LoadedActivities);
+			
 			this.Logger(`Разгрузка ${key}-активностей`);
 			LoadedActivities[key] = [];
 		}

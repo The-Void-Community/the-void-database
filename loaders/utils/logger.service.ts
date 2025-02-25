@@ -1,5 +1,5 @@
 import Logger from "fock-logger";
-import { LoggerName } from "fock-logger/loggers.types";
+import { LoggerName } from "fock-logger/src/data/loggers.types";
 import { Colors } from "f-formatter";
 
 const LoggersNames: {

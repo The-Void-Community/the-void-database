@@ -13,12 +13,11 @@ class Constants {
 
 	public readonly execute = () => {
 		const filePath = path.join(__dirname, "../", "../", "data", "constants.json");
+		const str = JSON.stringify(this._constants, this.replacer, this.space)
 
-		fs.writeFileSync(
-			filePath,
-			JSON.stringify(this._constants, this.replacer, this.space),
-			"utf-8"
-		);
+		fs.writeFileSync(filePath, str, "utf-8");
+
+		return str;
 	};
 }
 
