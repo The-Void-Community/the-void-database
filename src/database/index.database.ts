@@ -106,7 +106,7 @@ class Database<T> {
       return {
         text: "updated",
         type: 1,
-        data: await this._model.updateOne(options.filter, options.update)
+        data: await this._model.updateOne(options.filter, options.update || {})
       };
     } catch (err: any) {
       console.log(err);

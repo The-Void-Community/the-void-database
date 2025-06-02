@@ -6,6 +6,7 @@
 		"baseUrl": "./",
     "sourceMap": true,
 		"declaration": true,
+    "resolveJsonModule": true,
 		"declarationMap": true,
 		"outDir": "./dist",
 		"esModuleInterop": true,
