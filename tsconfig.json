@@ -1,19 +1,18 @@
 {
-  "compilerOptions": {
-    "declaration": true,
+	"compilerOptions": {
+		"target": "es2023",
 		"module": "CommonJS",
-    "strict": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "jsx": "react-native",
-    "lib": ["dom", "es5", "es6", "scripthost"],
-    "target": "es5",
-    "rootDir": "./",
-    "outDir": "./dist",
-    "esModuleInterop": true,
-    "resolveJsonModule": true,
+		"rootDir": "./src/",
+		"baseUrl": "./",
     "sourceMap": true,
-    "skipLibCheck": true
-  },
-  "exclude": ["node_modules", "dist"]
+		"declaration": true,
+		"declarationMap": true,
+		"outDir": "./dist",
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"strict": true,
+		"skipLibCheck": true
+	},
+	"include": ["./**/*.ts"],
+	"exclude": ["node_modules", "dist", "test"]
 }
