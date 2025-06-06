@@ -1,6 +1,6 @@
 {
   "name": "@thevoidcommunity/the-void-database",
-  "version": "3.0.0-alpha.1a",
+  "version": "3.0.0-alpha.1b",
   "description": "The Void's database",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -8,6 +8,8 @@
     "./package.json",
     "./README.md",
     "./LICENSE",
+
+    "./data/**/*.json",
 
     "./**/*.js",
     "./**/*.js.map",
