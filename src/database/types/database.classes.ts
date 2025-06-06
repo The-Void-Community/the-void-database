@@ -16,7 +16,8 @@ class Error implements DatabaseStatus {
 
 export class ErrorNotFindType {
   readonly type: StatusType = 0;
-  readonly text: string = "Введите тип one или all, возможная ошибка на стороне сервера";
+  readonly text: string =
+    "Введите тип one или all, возможная ошибка на стороне сервера";
 
   public error: any;
 
@@ -27,7 +28,8 @@ export class ErrorNotFindType {
 
 export class ErrorNotFound {
   readonly type: StatusType = 0;
-  readonly text: string = "Не удалось найти, возможная ошибка на стороне сервера.";
+  readonly text: string =
+    "Не удалось найти, возможная ошибка на стороне сервера.";
 
   public error: any;
 

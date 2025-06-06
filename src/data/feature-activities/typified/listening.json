@@ -1,4 +1,6 @@
-{ "type": "listening", "activities": [
+{
+  "type": "listening",
+  "activities": [
     "Видео на фоне",
     "Классику",
     "Музыку",
@@ -6,4 +8,5 @@
     "Плейлисты ${THEVOIDSBOT_REVERSE}",
     "Рок",
     "Фонк"
-]}
+  ]
+}

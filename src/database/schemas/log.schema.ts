@@ -57,13 +57,13 @@ const defaultBooleanType = { type: types.Boolean, required: true };
 
 const requiredTypes = {
   channel_id: defaultStringType,
-  enabled: defaultBooleanType
+  enabled: defaultBooleanType,
 };
 
 const modTypes = {
   added: defaultBooleanType,
   cleaned: defaultBooleanType,
-  enabled: defaultBooleanType
+  enabled: defaultBooleanType,
 };
 
 const schema = new Schema<ILog>({
@@ -72,28 +72,28 @@ const schema = new Schema<ILog>({
   options: {
     server: {
       ...requiredTypes,
-      update: defaultBooleanType
+      update: defaultBooleanType,
     },
 
     channels: {
       ...requiredTypes,
 
       delete: defaultBooleanType,
-      update: defaultBooleanType
+      update: defaultBooleanType,
     },
 
     messages: {
       ...requiredTypes,
 
       delete: defaultBooleanType,
-      update: defaultBooleanType
+      update: defaultBooleanType,
     },
 
     bots: {
       ...requiredTypes,
 
       exit: defaultBooleanType,
-      enter: defaultBooleanType
+      enter: defaultBooleanType,
     },
 
     users: {
@@ -103,21 +103,21 @@ const schema = new Schema<ILog>({
         roles_update: defaultBooleanType,
 
         exit: defaultBooleanType,
-        enter: defaultBooleanType
+        enter: defaultBooleanType,
       },
 
       profile: {
         nickname: defaultBooleanType,
-        avatar: defaultBooleanType
+        avatar: defaultBooleanType,
       },
 
       moderation: {
         mutes: modTypes,
         bans: modTypes,
-        warns: modTypes
-      }
-    }
-  }
+        warns: modTypes,
+      },
+    },
+  },
 });
 
 export default mongoose.model("log", schema);

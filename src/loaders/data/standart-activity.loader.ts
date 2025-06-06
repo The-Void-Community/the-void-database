@@ -15,7 +15,10 @@ class StandartActivityLoader {
         const key = k as keyof typeof THEVOIDs_CONSTANTS;
 
         if (activity.text.indexOf(`\$\{${key}\}`) !== -1)
-          activity.text = activity.text.replace(`\$\{${key}\}`, THEVOIDs_CONSTANTS[key]);
+          activity.text = activity.text.replace(
+            `\$\{${key}\}`,
+            THEVOIDs_CONSTANTS[key],
+          );
       }
 
       activities.push(activity);

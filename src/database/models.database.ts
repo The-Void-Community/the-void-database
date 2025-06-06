@@ -11,7 +11,9 @@ import type { ILog } from "./schemas/log.schema";
 class Models {
   private readonly _cvc = new Database<ICVC>(database.CVC.database);
   private readonly _mtu = new Database<IMTU>(database.MTU.database);
-  private readonly _mutliplatform = new Database<IMultiplatform>(database.mutliplatform.database);
+  private readonly _mutliplatform = new Database<IMultiplatform>(
+    database.mutliplatform.database,
+  );
   private readonly _idea = new Database<IIdea>(database.idea.database);
   private readonly _locale = new Database<ILocale>(database.locale.database);
   private readonly _log = new Database<ILog>(database.log.database);

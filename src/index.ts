@@ -5,5 +5,5 @@ import * as ai from "./ai";
 export = {
   ai,
   database,
-  loaders
+  loaders,
 };

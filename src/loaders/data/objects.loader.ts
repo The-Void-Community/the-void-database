@@ -14,7 +14,7 @@ const objects: {
 } = {
   download: [],
   idea: [],
-  names: []
+  names: [],
 };
 
 class ObjectsLoader {

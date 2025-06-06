@@ -11,7 +11,7 @@ import type {
   SchemaDefinition,
   SchemaDefinitionType,
   UpdateQuery,
-  UpdateWithAggregationPipeline
+  UpdateWithAggregationPipeline,
 } from "mongoose";
 
 export const types = mongoose.SchemaTypes;
@@ -36,12 +36,16 @@ export type SchemaType<
   RawDocType = any,
   TSchemaOptions = DefaultSchemaOptions,
   DocType extends ApplySchemaOptions<
-    ObtainDocumentType<DocType, RawDocType, ResolveSchemaOptions<TSchemaOptions>>,
+    ObtainDocumentType<
+      DocType,
+      RawDocType,
+      ResolveSchemaOptions<TSchemaOptions>
+    >,
     ResolveSchemaOptions<TSchemaOptions>
   > = ApplySchemaOptions<
     ObtainDocumentType<any, RawDocType, ResolveSchemaOptions<TSchemaOptions>>,
     ResolveSchemaOptions<TSchemaOptions>
-  >
+  >,
 > = SchemaDefinition<SchemaDefinitionType<RawDocType>, RawDocType> | DocType;
 
 export type UpdateOptions<T> = {

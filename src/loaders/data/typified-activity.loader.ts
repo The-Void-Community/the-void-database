@@ -17,7 +17,10 @@ class TypifiedActivityLoader {
         const key = k as keyof typeof THEVOIDs_CONSTANTS;
 
         if (activityText.indexOf(`\$\{${key}\}`) !== -1)
-          activityText = activityText.replace(`\$\{${key}\}`, THEVOIDs_CONSTANTS[key]);
+          activityText = activityText.replace(
+            `\$\{${key}\}`,
+            THEVOIDs_CONSTANTS[key],
+          );
       }
 
       activities.push({ text: activityText, type: file.type });

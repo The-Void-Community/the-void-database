@@ -1,6 +1,6 @@
 {
   "name": "@thevoidcommunity/the-void-database",
-  "version": "3.0.0-alpha.1b",
+  "version": "3.0.0-alpha.1c",
   "description": "The Void's database",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -8,20 +8,18 @@
     "./package.json",
     "./README.md",
     "./LICENSE",
-
-    "./data/**/*.json",
-
+    "./dist/**/*.json",
     "./**/*.js",
     "./**/*.js.map",
     "./**/*.d.ts",
     "./**/*.d.ts.map",
     "./**/*.json",
-
+    "!./src/*.json",
     "!./**/test/",
     "!./**/*.ts"
   ],
   "scripts": {
-    "build": "tsc"
+    "build": "tsc && fockbuilder"
   },
   "keywords": [
     "db"
@@ -30,6 +28,7 @@
   "license": "MIT",
   "dependencies": {
     "f-formatter": "^0.3.1",
+    "fock-builder": "^1.1.0-beta",
     "fock-logger": "^3.0.0",
     "mongoose": "^8.3.2",
     "node": "^22.12.0",

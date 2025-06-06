@@ -1,19 +1,19 @@
 {
-	"compilerOptions": {
-		"target": "es2023",
-		"module": "CommonJS",
-		"rootDir": "./src/",
-		"baseUrl": "./",
+  "compilerOptions": {
+    "target": "es2023",
+    "module": "CommonJS",
+    "rootDir": "./src/",
+    "baseUrl": "./",
     "sourceMap": true,
-		"declaration": true,
+    "declaration": true,
     "resolveJsonModule": true,
-		"declarationMap": true,
-		"outDir": "./dist",
-		"esModuleInterop": true,
-		"forceConsistentCasingInFileNames": true,
-		"strict": true,
-		"skipLibCheck": true
-	},
-	"include": ["./**/*.ts"],
-	"exclude": ["node_modules", "dist", "test"]
+    "declarationMap": true,
+    "outDir": "./dist",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true
+  },
+  "include": ["./**/*.ts"],
+  "exclude": ["node_modules", "dist", "test"]
 }

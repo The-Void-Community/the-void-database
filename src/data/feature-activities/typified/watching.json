@@ -1,4 +1,6 @@
-{ "type": "watching", "activities": [
+{
+  "type": "watching",
+  "activities": [
     "Абреввиатуры...",
     "Аниме \"${anime}\"",
     "Версию ${version}",
@@ -17,4 +19,5 @@
     "Романтику...",
     "data/activities/*.json...",
     "Discord сервера"
-]}
+  ]
+}

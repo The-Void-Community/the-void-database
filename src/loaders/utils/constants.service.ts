@@ -12,7 +12,13 @@ class Constants {
   }
 
   public readonly execute = () => {
-    const filePath = path.join(__dirname, "../", "../", "data", "constants.json");
+    const filePath = path.join(
+      __dirname,
+      "../",
+      "../",
+      "data",
+      "constants.json",
+    );
     const str = JSON.stringify(this._constants, this.replacer, this.space);
 
     fs.writeFileSync(filePath, str, "utf-8");

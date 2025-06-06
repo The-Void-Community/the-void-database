@@ -22,7 +22,7 @@ export const OPENAI_MODELS = [
   "gpt-3.5-turbo-0125",
   "gpt-3.5-turbo",
   "text-embedding-3-large",
-  "text-embedding-ada-002"
+  "text-embedding-ada-002",
 ] as const;
 
 export type OpenAiModels = (typeof OPENAI_MODELS)[number];

@@ -18,7 +18,7 @@ const schema = new Schema<IMultiplatform>({
   telegram_name: { type: types.String, required: true },
   discord_name: { type: types.String, required: true },
 
-  password: { type: types.String, required: true }
+  password: { type: types.String, required: true },
 });
 
 export default mongoose.model("multiplatform", schema);

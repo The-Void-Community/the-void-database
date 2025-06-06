@@ -8,7 +8,7 @@ interface ICVC {
 
 const schema = new Schema<ICVC>({
   guild_id: { type: types.String, required: true },
-  channel_id: { type: types.String, required: true }
+  channel_id: { type: types.String, required: true },
 });
 
 export default mongoose.model("create-voice-channels", schema);

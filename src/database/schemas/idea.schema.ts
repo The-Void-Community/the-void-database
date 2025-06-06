@@ -16,7 +16,7 @@ const schema = new Schema<IIdea>({
 
   username: { type: types.String, required: true },
   global_name: { type: types.String, required: true },
-  guild_name: { type: types.String, required: true }
+  guild_name: { type: types.String, required: true },
 });
 
 export default mongoose.model("idea", schema);

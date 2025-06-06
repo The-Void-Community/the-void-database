@@ -5,7 +5,7 @@ import type {
   Filter,
   FindOptions,
   DatabaseStatus as Status,
-  UpdateOptions
+  UpdateOptions,
 } from "./types/database.types";
 
 import Error from "./types/database.classes";
@@ -18,7 +18,7 @@ class StaticDatabase {
       return {
         text: `Успешно удалена модель ${name}`,
         type: 1,
-        data: data
+        data: data,
       };
     } catch (err) {
       console.log(err);
@@ -27,20 +27,27 @@ class StaticDatabase {
     }
   };
 
-  public getData = async <T>(Model: ModelType<T>, options: FindOptions<T>): Promise<Status> => {
+  public getData = async <T>(
+    Model: ModelType<T>,
+    options: FindOptions<T>,
+  ): Promise<Status> => {
     try {
-      const data = await Model.find(options.filter, options.projection, options.options);
+      const data = await Model.find(
+        options.filter,
+        options.projection,
+        options.options,
+      );
 
       if (!data)
         return {
           text: "Возможно, таблицы не существует",
-          type: 0
+          type: 0,
         };
 
       return {
         text: "Таблица успешно найдена",
         type: 1,
-        data: data
+        data: data,
       };
     } catch (err) {
       console.error(err);
@@ -56,13 +63,13 @@ class StaticDatabase {
       if (!models)
         return {
           text: "Произошла какая-то ошибка, возможно, таблиц не существует",
-          type: 0
+          type: 0,
         };
 
       return {
         text: "Успешно найдены таблицы",
         type: 1,
-        data: models
+        data: models,
       };
     } catch (err) {
       console.error(err);
@@ -89,14 +96,14 @@ class Database<T> {
       return {
         text: "created",
         type: 1,
-        data: await this._model.create(doc)
+        data: await this._model.create(doc),
       };
     } catch (err: any) {
       console.log(err);
       return {
         text: "error",
         type: 0,
-        error: err
+        error: err,
       };
     }
   };
@@ -106,14 +113,14 @@ class Database<T> {
       return {
         text: "updated",
         type: 1,
-        data: await this._model.updateOne(options.filter, options.update || {})
+        data: await this._model.updateOne(options.filter, options.update || {}),
       };
     } catch (err: any) {
       console.log(err);
       return {
         text: "error",
         type: 0,
-        error: err
+        error: err,
       };
     }
   };
@@ -123,14 +130,14 @@ class Database<T> {
       return {
         text: "deleted",
         type: 1,
-        data: await this._model.deleteOne(filter)
+        data: await this._model.deleteOne(filter),
       };
     } catch (err: any) {
       console.log(err);
       return {
         text: "error",
         type: 0,
-        error: err
+        error: err,
       };
     }
   };
@@ -143,7 +150,7 @@ class Database<T> {
       return {
         text: "error",
         type: 0,
-        error: err
+        error: err,
       };
     }
   };
@@ -153,14 +160,14 @@ class Database<T> {
       return {
         text: "getted",
         type: 1,
-        data: await this._model.find()
+        data: await this._model.find(),
       };
     } catch (err: any) {
       console.log(err);
       return {
         text: "error",
         type: 0,
-        error: err
+        error: err,
       };
     }
   };
@@ -173,7 +180,7 @@ class Database<T> {
       return {
         text: "error",
         type: 0,
-        error: err
+        error: err,
       };
     }
   };

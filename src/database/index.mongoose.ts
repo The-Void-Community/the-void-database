@@ -11,7 +11,7 @@ export const errorNotFound: Status = {
 
   error: "Не удалось найти",
   type: 0,
-  data: undefined
+  data: undefined,
 };
 
 export const errorNotFindType: Status = {
@@ -19,7 +19,7 @@ export const errorNotFindType: Status = {
 
   error: "Введите тип findOne или findAll",
   type: 0,
-  data: undefined
+  data: undefined,
 };
 
 export const deleteModel = async (name: string): Promise<Status> => {
@@ -29,7 +29,7 @@ export const deleteModel = async (name: string): Promise<Status> => {
     return {
       text: `Успешно удалена модель ${name}`,
       type: 0,
-      data: data
+      data: data,
     };
   } catch (err: any) {
     console.log(err);
@@ -45,13 +45,13 @@ export const getAllModels = async (): Promise<Status> => {
     if (!models)
       return {
         text: "Произошла какая-то ошибка, возможно, таблиц не существует",
-        type: 0
+        type: 0,
       };
 
     return {
       text: "Успешно найдены таблицы",
       type: 0,
-      data: models
+      data: models,
     };
   } catch (err: any) {
     console.error(err);

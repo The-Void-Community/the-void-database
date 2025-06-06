@@ -4,10 +4,12 @@ import { Models } from "../types/models.types";
 
 import { settings } from "../types/settings.type";
 
-const developerParams: ChatCompletionDeveloperMessageParam[] = Object.keys(settings).map((k) => {
+const developerParams: ChatCompletionDeveloperMessageParam[] = Object.keys(
+  settings,
+).map((k) => {
   return {
     role: "developer",
-    content: (settings as { [key: string]: string })[k]
+    content: (settings as { [key: string]: string })[k],
   };
 });
 
@@ -17,10 +19,16 @@ export default class Ai {
   private readonly _openai: OpenAI;
 
   public constructor(data: (ClientOptions & { key: string }) | string) {
-    this._openai = typeof data === "string" ? new OpenAI({ apiKey: data }) : new OpenAI(data);
+    this._openai =
+      typeof data === "string"
+        ? new OpenAI({ apiKey: data })
+        : new OpenAI(data);
   }
 
-  public chat(message: string[] | string, data: { model?: Models; steam?: boolean }) {
+  public chat(
+    message: string[] | string,
+    data: { model?: Models; steam?: boolean },
+  ) {
     try {
       const reply = this._openai.chat.completions.create({
         model: data.model || this._model,
@@ -29,8 +37,8 @@ export default class Ai {
           ...developerParams,
           ...(typeof message === "string" ? [message] : message).map((msg) => {
             return { role: this._role.user, content: msg };
-          })
-        ]
+          }),
+        ],
       });
 
       return reply;

@@ -12,28 +12,28 @@ import { StatusType, DatabaseStatus } from "./types/database.types";
 const database = {
   CVC: {
     database: CVC.default,
-    schema: MTU.schema
+    schema: MTU.schema,
   },
   MTU: {
     database: MTU.default,
-    schema: MTU.schema
+    schema: MTU.schema,
   },
   mutliplatform: {
     database: mutliplatform.default,
-    schema: mutliplatform.schema
+    schema: mutliplatform.schema,
   },
   idea: {
     database: idea.default,
-    schema: idea.schema
+    schema: idea.schema,
   },
   locale: {
     database: locale.default,
-    schema: locale.schema
+    schema: locale.schema,
   },
   log: {
     database: log.default,
-    schema: log.schema
-  }
+    schema: log.schema,
+  },
 };
 
 export default { database, init };

@@ -11,7 +11,7 @@ const LoggersNames: {
   Events: { name: "Events", colors: [Colors.brightYellow, Colors.green] },
   Commands: { name: "Commands", colors: [Colors.brightYellow, Colors.green] },
   Loader: { name: "Loader", colors: [Colors.brightYellow, Colors.red] },
-  Fail: { name: "Fail", colors: [Colors.red, Colors.red] }
+  Fail: { name: "Fail", colors: [Colors.red, Colors.red] },
 };
 
 for (const key in LoggersNames) {

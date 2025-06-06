@@ -10,7 +10,12 @@ interface ILocale {
 
 const schema = new Schema<ILocale>({
   user_id: { type: types.String, required: true, unique: true },
-  language: { type: types.String, required: false, unique: false, default: "ru" }
+  language: {
+    type: types.String,
+    required: false,
+    unique: false,
+    default: "ru",
+  },
 });
 
 export default mongoose.model("locale", schema);

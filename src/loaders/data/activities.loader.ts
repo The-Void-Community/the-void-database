@@ -12,7 +12,9 @@ import fs from "node:fs";
 import ClassFormatter, { Colors } from "f-formatter";
 
 const activitiesPath = path.join(__dirname, "../", "../", "data");
-const activitiesFolders = fs.readdirSync(activitiesPath).filter((file) => !file.endsWith(".json"));
+const activitiesFolders = fs
+  .readdirSync(activitiesPath)
+  .filter((file) => !file.endsWith(".json"));
 
 const StandartActivityLoader = new ClassStandartActivityLoader();
 const TypifiedActivityLoader = new ClassTypifiedActivityLoader();
@@ -28,7 +30,7 @@ const LoadedActivities: {
   guild: [],
   name: [],
   kristy: [],
-  other: []
+  other: [],
 };
 
 const LoadedUtility: {
@@ -36,7 +38,7 @@ const LoadedUtility: {
   titles: { [key: string]: string[] };
 } = {
   banwords: [],
-  titles: {}
+  titles: {},
 };
 
 class ActivitiesLoader {
@@ -58,10 +60,13 @@ class ActivitiesLoader {
 
       if (this.folder === "typified") {
         try {
-          const TypifiedActivities: Activity[] = TypifiedActivityLoader.execute(filePath);
+          const TypifiedActivities: Activity[] =
+            TypifiedActivityLoader.execute(filePath);
 
-          if (fileName === "guilds.json") LoadedActivities.guild.push(...TypifiedActivities);
-          else if (fileName === "names.json") LoadedActivities.name.push(...TypifiedActivities);
+          if (fileName === "guilds.json")
+            LoadedActivities.guild.push(...TypifiedActivities);
+          else if (fileName === "names.json")
+            LoadedActivities.name.push(...TypifiedActivities);
           else LoadedActivities.other.push(...TypifiedActivities);
 
           this.Logger(
@@ -69,15 +74,15 @@ class ActivitiesLoader {
               Formatter.Colored(
                 `${this.folder} / ${fileName}`,
                 [Colors.yellow, Colors.yellow, Colors.green],
-                ""
+                "",
               ),
-            { color: Colors.green }
+            { color: Colors.green },
           );
         } catch (err) {
           console.error(err);
 
           this.Logger(`Файл ${fileName} не был загружен успешно`, {
-            color: Colors.red
+            color: Colors.red,
           });
         }
 
@@ -105,15 +110,15 @@ class ActivitiesLoader {
             Formatter.Colored(
               `${folder} / ${fileName}`,
               [Colors.yellow, Colors.yellow, Colors.green],
-              ""
+              "",
             ),
-          { color: Colors.green }
+          { color: Colors.green },
         );
       } catch (err) {
         console.error(err);
 
         this.Logger(`Файл ${fileName} не был загружен успешно`, {
-          color: Colors.red
+          color: Colors.red,
         });
       }
     }
@@ -133,23 +138,25 @@ class ActivitiesLoader {
 
         const data = UtilityLoader.execute(filePath);
 
-        if (!Array.isArray(data) && name === "titles") LoadedUtility[name] = data;
-        else if (Array.isArray(data) && name === "banwords") LoadedUtility[name] = data;
+        if (!Array.isArray(data) && name === "titles")
+          LoadedUtility[name] = data;
+        else if (Array.isArray(data) && name === "banwords")
+          LoadedUtility[name] = data;
 
         this.Logger(
           "Загружен " +
             Formatter.Colored(
               `${folder} / ${fileName}`,
               [Colors.yellow, Colors.yellow, Colors.green],
-              ""
+              "",
             ),
-          { color: Colors.green }
+          { color: Colors.green },
         );
       } catch (err) {
         console.error(err);
 
         this.Logger(`Файл ${fileName} не был загружен успешно`, {
-          color: Colors.red
+          color: Colors.red,
         });
       }
     }
