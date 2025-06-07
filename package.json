@@ -1,9 +1,9 @@
 {
   "name": "@thevoidcommunity/the-void-database",
-  "version": "3.0.0-alpha.1c",
+  "version": "3.0.0-beta",
   "description": "The Void's database",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "index.js",
+  "types": "index.d.ts",
   "files": [
     "./package.json",
     "./README.md",
