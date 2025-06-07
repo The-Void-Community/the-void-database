@@ -10,6 +10,11 @@
     ],
 
     "fsource": [
+        ".gitignore",
+        "README.md",
+        "package.json",
+        "LICENSE",
+
         [ "data", "constants.json" ],
         [ "data", "download.json" ],
         [ "data", "idea.json" ],
@@ -40,6 +45,11 @@
     ],
 
     "fbuild": [
+        ".gitignore",
+        "README.md",
+        "package.json",
+        "LICENSE",
+
         [ "data", "constants.json" ],
         [ "data", "download.json" ],
         [ "data", "idea.json" ],
@@ -70,5 +80,5 @@
     ],
 
     "build": "./dist/",
-    "source": "./src/"
+    "source": "./"
 }
