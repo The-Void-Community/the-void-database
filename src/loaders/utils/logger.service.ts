@@ -1,4 +1,4 @@
-import { LoggerName } from "fock-logger/dist/data/loggers.types";
+import { LoggerName } from "fock-logger/data/loggers.types";
 
 import Logger, { Colors } from "fock-logger";
 
