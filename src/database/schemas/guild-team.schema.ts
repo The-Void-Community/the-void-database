@@ -1,7 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 
 import type { SchemaParameters } from "../../types/mongodb.types";
-import type { ITeam } from "../../types/guild-teams.types";
+import type { ITeam } from "../../types/guild-team.types";
 
 const data: SchemaParameters<ITeam> = {
   id: {
