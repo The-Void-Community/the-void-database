@@ -1,6 +1,6 @@
 {
   "name": "@thevoidcommunity/the-void-database",
-  "version": "3.0.0-beta.1b",
+  "version": "4.0.0-beta.1",
   "description": "The Void's database",
   "main": "index.js",
   "types": "index.d.ts",
@@ -19,7 +19,8 @@
     "!./**/*.ts"
   ],
   "scripts": {
-    "build": "tsc && fockbuilder"
+    "build": "npm run compile && tsc && fockbuilder",
+    "compile": "set NODE_ENV=compile_settings&& ts-node ./src/settings/settings.ts"
   },
   "keywords": [
     "db"
@@ -27,7 +28,9 @@
   "author": "thevoidcommunity",
   "license": "MIT",
   "dependencies": {
+    "discord.js": "^14.20.0",
     "f-formatter": "^0.3.1",
+    "fbit-field": "^1.4.0-alpha.1b",
     "fock-logger": "^4.0.1a",
     "mongoose": "^8.3.2",
     "node": "^22.12.0",
@@ -40,5 +43,6 @@
     "rimraf": "^6.0.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
-  }
+  },
+  "packageManager": "pnpm@10.10.0+sha512.d615db246fe70f25dcfea6d8d73dee782ce23e2245e3c4f6f888249fb568149318637dca73c2c5c8ef2a4ca0d5657fb9567188bfab47f566d1ee6ce987815c39"
 }
