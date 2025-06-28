@@ -6,6 +6,8 @@ export interface ITeam {
 
   /** { memberId: roleId[] } */
   members: Map<string, string[]>;
-  /** { roleName: roleId } */
+  /** { roleId: roleName } */
   roles: Map<string, string>;
+  /** channelId[] */
+  channels: Array<string>;
 };

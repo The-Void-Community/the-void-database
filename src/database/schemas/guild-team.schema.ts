@@ -29,7 +29,9 @@ const data: SchemaParameters<ITeam> = {
   roles: {
     type: mongoose.SchemaTypes.Map,
     required: true
-  }
+  },
+
+  channels: mongoose.SchemaTypes.Array
 };
 const keys = Object.keys(data);
 const schema = new Schema<ITeam>(data);
