@@ -11,10 +11,11 @@ import fs from "node:fs";
 
 import ClassFormatter, { Colors } from "f-formatter";
 
-const activitiesPath = path.join(__dirname, "../", "../", "data");
-const activitiesFolders = fs
-  .readdirSync(activitiesPath)
-  .filter((file) => !file.endsWith(".json"));
+const FILE_EXTIENSION = ".json" as const;
+const ACTIVITIES_PATH = path.join(__dirname, "../", "../", "data");
+const FILES = fs
+  .readdirSync(ACTIVITIES_PATH)
+  .filter((file) => !file.endsWith(FILE_EXTIENSION));
 
 const StandartActivityLoader = new ClassStandartActivityLoader();
 const TypifiedActivityLoader = new ClassTypifiedActivityLoader();
@@ -208,16 +209,16 @@ class ActivitiesLoader {
   public readonly execute = () => {
     this.Logger("Загрузка активностей");
 
-    for (const activityFolder of activitiesFolders) {
-      this.activityFolderPath = path.join(activitiesPath, activityFolder);
+    for (const activityFolder of FILES) {
+      this.activityFolderPath = path.join(ACTIVITIES_PATH, activityFolder);
 
       this.jsonFiles = fs
         .readdirSync(this.activityFolderPath)
-        .filter((file) => file.endsWith(".json"));
+        .filter((file) => file.endsWith(FILE_EXTIENSION));
 
       this.folders = fs
         .readdirSync(this.activityFolderPath)
-        .filter((file) => !file.endsWith(".json"));
+        .filter((file) => !file.endsWith(FILE_EXTIENSION));
 
       if (this.jsonFiles.length !== 0) this.JSONCicle();
       else this.FolderCicle();

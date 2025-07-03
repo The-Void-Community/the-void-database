@@ -1,5 +1,6 @@
 import { BitBuilder } from "fbit-field";
-import Compiler from "fbit-field/compiler";
+import { Compiler } from "fbit-field/compiler";
+import { join } from "node:path";
 
 type ISettigns<T extends any[] | readonly any[]> = Record<T[number], bigint>;
 
@@ -9,7 +10,7 @@ export const format = (string: string, capitalize: boolean) =>
     : string.charAt(0).toLowerCase() + string.slice(1);
 
 export const formatSettings = <T extends string>(
-  settings: T[] | readonly T[]
+  settings: T[] | readonly T[],
 ) =>
   settings.map((string: T) =>
     format(
@@ -20,8 +21,8 @@ export const formatSettings = <T extends string>(
         .split(" ")
         .map((v) => format(v, true))
         .join(""),
-      false
-    )
+      false,
+    ),
   );
 
 export namespace Settings {
@@ -48,7 +49,7 @@ export namespace Settings {
       "WHEN_USER__JOIN_INTO_GUILD__SEND_HELLO_MESSAGE_TO_CHANNEL",
       "WHEN_USER__LEAVE_FROM_GUILD__SEND_GOODBYE_MESSAGE_TO_CHANNEL",
 
-      "WHEN_USER__JOIN_INTO_GUILD__GRANT_ROLES"
+      "WHEN_USER__JOIN_INTO_GUILD__GRANT_ROLES",
     ] as const;
 
     export const ALL = [...EXCLUDE] as const;
@@ -82,7 +83,7 @@ export namespace Settings {
 
       "WHEN_ROLES__CHANGES_AT_USER__SEND_LOG_INTO_CHANNEL",
 
-      "WHEN_GUILD_PROFILE__CHANGES__SEND_LOG_INTO_CHANNEL"
+      "WHEN_GUILD_PROFILE__CHANGES__SEND_LOG_INTO_CHANNEL",
     ] as const;
 
     export const ALL = [...EXCLUDE] as const;
@@ -188,7 +189,7 @@ whenGuildProfileChangesSendLogIntoChannel: 1n << 17n
       when_user_leave_from_guild_send_message_to_user: unknown,
       when_user_join_into_guild_send_hello_message_to_channel: unknown,
       when_user_leave_from_guild_send_goodbye_message_to_channel: unknown,
-      when_user_join_into_guild_grant_roles: unknown
+      when_user_join_into_guild_grant_roles: unknown,
     ];
     logging: [
       when_bot_join_into_guild_send_log_into_channel: unknown,
@@ -202,8 +203,8 @@ whenGuildProfileChangesSendLogIntoChannel: 1n << 17n
       when_user_change_activity_send_log_into_channel: unknown,
       when_user_takes_mute_send_log_into_channel: unknown,
       when_user_takes_ban_send_log_into_channel: unknown,
-      when_roles_changes_at_user_send_log_into_channel: unknown,
-      when_guild_profile_changes_send_log_into_channel: unknown
+      // when_roles_changes_at_user_send_log_into_channel: unknown,
+      when_guild_profile_changes_send_log_into_channel: unknown,
     ];
     roles: [test_three: unknown, test_four: unknown];
   };
@@ -224,15 +225,15 @@ export type SettingsKeys<T extends Keys> = keyof Settings<T>;
         users: Users.RAW_DEFAULT,
         guild: Guild.RAW_DEFAULT,
         logging: Logging.RAW_DEFAULT,
-        roles: Roles.RAW_DEFAULT
+        roles: Roles.RAW_DEFAULT,
       } as const,
 
       available: {
         users: Users.RAW_AVAILABLE,
         guild: Guild.RAW_AVAILABLE,
         logging: Logging.RAW_AVAILABLE,
-        roles: Roles.RAW_AVAILABLE
-      } as const
+        roles: Roles.RAW_AVAILABLE,
+      } as const,
     } as const,
 
     object: {
@@ -240,16 +241,16 @@ export type SettingsKeys<T extends Keys> = keyof Settings<T>;
         users: Users.DEFAULT,
         guild: Guild.DEFAULT,
         logging: Logging.DEFAULT,
-        roles: Roles.DEFAULT
+        roles: Roles.DEFAULT,
       } as const,
 
       available: {
         users: Users.AVAILABLE,
         guild: Guild.AVAILABLE,
         logging: Logging.AVAILABLE,
-        roles: Roles.AVAILABLE
-      } as const
-    } as const
+        roles: Roles.AVAILABLE,
+      } as const,
+    } as const,
   } as const;
 }
 
@@ -257,22 +258,22 @@ if (process.env.NODE_ENV === "compile_settings") {
   const settings = Object.fromEntries(
     Object.keys(Settings.CONSTANTS.object.available).map((key) => [
       key,
-      Object.keys((Settings.CONSTANTS.object.available as any)[key])
-    ])
+      Object.keys((Settings.CONSTANTS.object.available as any)[key]),
+    ]),
   );
 
-  const typeCompiler = new Compiler(settings, __dirname + "\\settings.ts", {
+  const typeCompiler = new Compiler(settings, join(__dirname, "settings.ts"), {
     settingsFormat(settings) {
       return settings.map((string: string) =>
-        string.replaceAll("__", "_").toLocaleLowerCase()
+        string.replaceAll("__", "_").toLocaleLowerCase(),
       );
     },
     compile(me): any {
       return Object.fromEntries(
         me.keys.map((key) => [
           key,
-          me.parse(key).map((key) => `${key}: unknown`)
-        ])
+          me.parse(key).map((key) => `${key}: unknown`),
+        ]),
       );
     },
     writeFile(me): string {
@@ -281,16 +282,16 @@ if (process.env.NODE_ENV === "compile_settings") {
         .replaceAll("'\\n'", "\n");
 
       return `\nexport type IConfig = ${data};\n`;
-    }
+    },
   });
 
   new Compiler(
     settings,
-    __dirname + "\\settings.ts",
+    join(__dirname, "settings.ts"),
     {},
     {
       writeInCompiler: true,
-      defaultExportOn: false
-    }
+      defaultExportOn: false,
+    },
   ).execute(typeCompiler.writeFile(typeCompiler));
 }

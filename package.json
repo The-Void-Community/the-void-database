@@ -20,7 +20,7 @@
   ],
   "scripts": {
     "build": "npm run compile && tsc && fockbuilder",
-    "compile": "set NODE_ENV=compile_settings&& ts-node ./src/settings/settings.ts"
+    "compile": "cross-env NODE_ENV=compile_settings ts-node ./src/settings/settings.ts"
   },
   "keywords": [
     "db"
@@ -38,6 +38,7 @@
   },
   "devDependencies": {
     "@types/node": "^20.10.5",
+    "cross-env": "^7.0.3",
     "fock-builder": "^1.1.0-beta",
     "nodemon": "^3.1.7",
     "rimraf": "^6.0.1",

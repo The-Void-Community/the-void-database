@@ -1,11 +1,14 @@
-import path from "path";
-import fs from "fs";
+import { join } from "path";
+import { readdirSync } from "fs";
 
 import Logger from "fock-logger";
 import Formatter, { Colors } from "f-formatter";
 
-const dataPath = path.join(__dirname, "../", "../", "data");
-const files = fs.readdirSync(dataPath).filter((file) => file.endsWith(".json"));
+const FILE_EXTENSION = ".json" as const;
+const FILES_PATH = join(__dirname, "../", "../", "data");
+const FILES = readdirSync(FILES_PATH).filter((file) =>
+  file.endsWith(FILE_EXTENSION),
+);
 
 const objects: {
   idea: { idea: string; ideaDetail: string }[];
@@ -23,9 +26,9 @@ class ObjectsLoader {
   public readonly execute = () => {
     this.Logger("Загрузка объектов");
 
-    for (const fileName of files) {
-      const file = new Formatter().FromJSONWithPath(`${dataPath}\\${fileName}`);
-      const name = fileName.replace(".json", "") as keyof typeof objects;
+    for (const fileName of FILES) {
+      const file = new Formatter().FromJSONWithPath(join(FILES_PATH, fileName));
+      const name = fileName.replace(FILE_EXTENSION, "") as keyof typeof objects;
 
       objects[name] = file;
       this.Logger(`Загружен ${`${fileName}`}`, { color: Colors.green });
