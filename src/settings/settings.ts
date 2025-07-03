@@ -50,6 +50,8 @@ export namespace Settings {
       "WHEN_USER__LEAVE_FROM_GUILD__SEND_GOODBYE_MESSAGE_TO_CHANNEL",
 
       "WHEN_USER__JOIN_INTO_GUILD__GRANT_ROLES",
+
+      "WHEN_USER__JOIN_INTO_VOICE__CREATE_VOICE_AND_MOVE_HIM",
     ] as const;
 
     export const ALL = [...EXCLUDE] as const;
@@ -70,6 +72,9 @@ export namespace Settings {
 
       "WHEN_USER__JOIN_INTO_GUILD__SEND_LOG_INTO_CHANNEL",
       "WHEN_USER__LEAVE_FROM_GUILD__SEND_LOG_INTO_CHANNEL",
+
+      "WHEN_USER__JOIN_INTO_VOICE__SEND_LOG_INTO_CHANNEL",
+      "WHEN_USER__LEAVE_FROM_VOICE__SEND_LOG_INTO_CHANNEL",
 
       "WHEN_MESSAGE__WAS_SENDED__SEND_LOG_INTO_CHANNEL",
       "WHEN_MESSAGE__WAS_CHANGED__SEND_LOG_INTO_CHANNEL",
@@ -133,48 +138,57 @@ whenUserJoinIntoGuildSendHelloMessageToChannel: 1n << 2n,
 whenUserLeaveFromGuildSendGoodbyeMessageToChannel: 1n << 3n,
 
     /** @value 16 */
-whenUserJoinIntoGuildGrantRoles: 1n << 4n
+whenUserJoinIntoGuildGrantRoles: 1n << 4n,
+
+    /** @value 32 */
+whenUserJoinIntoVoiceCreateVoiceAndMoveHim: 1n << 5n
   } as const,
 
   logging: {
-    /** @value 32 */
-whenBotJoinIntoGuildSendLogIntoChannel: 1n << 5n,
-
     /** @value 64 */
-whenBotLeaveFromGuildSendLogIntoChannel: 1n << 6n,
+whenBotJoinIntoGuildSendLogIntoChannel: 1n << 6n,
 
     /** @value 128 */
-whenUserJoinIntoGuildSendLogIntoChannel: 1n << 7n,
+whenBotLeaveFromGuildSendLogIntoChannel: 1n << 7n,
 
     /** @value 256 */
-whenUserLeaveFromGuildSendLogIntoChannel: 1n << 8n,
+whenUserJoinIntoGuildSendLogIntoChannel: 1n << 8n,
 
     /** @value 512 */
-whenMessageWasSendedSendLogIntoChannel: 1n << 9n,
+whenUserLeaveFromGuildSendLogIntoChannel: 1n << 9n,
 
     /** @value 1024 */
-whenMessageWasChangedSendLogIntoChannel: 1n << 10n,
+whenUserJoinIntoVoiceSendLogIntoChannel: 1n << 10n,
 
     /** @value 2048 */
-whenMessageWasDeletedSendLogIntoChannel: 1n << 11n,
+whenUserLeaveFromVoiceSendLogIntoChannel: 1n << 11n,
 
     /** @value 4096 */
-whenUserChangeProfileSendLogIntoChannel: 1n << 12n,
+whenMessageWasSendedSendLogIntoChannel: 1n << 12n,
 
     /** @value 8192 */
-whenUserChangeActivitySendLogIntoChannel: 1n << 13n,
+whenMessageWasChangedSendLogIntoChannel: 1n << 13n,
 
     /** @value 16384 */
-whenUserTakesMuteSendLogIntoChannel: 1n << 14n,
+whenMessageWasDeletedSendLogIntoChannel: 1n << 14n,
 
     /** @value 32768 */
-whenUserTakesBanSendLogIntoChannel: 1n << 15n,
+whenUserChangeProfileSendLogIntoChannel: 1n << 15n,
 
     /** @value 65536 */
-whenRolesChangesAtUserSendLogIntoChannel: 1n << 16n,
+whenUserChangeActivitySendLogIntoChannel: 1n << 16n,
 
     /** @value 131072 */
-whenGuildProfileChangesSendLogIntoChannel: 1n << 17n
+whenUserTakesMuteSendLogIntoChannel: 1n << 17n,
+
+    /** @value 262144 */
+whenUserTakesBanSendLogIntoChannel: 1n << 18n,
+
+    /** @value 524288 */
+whenRolesChangesAtUserSendLogIntoChannel: 1n << 19n,
+
+    /** @value 1048576 */
+whenGuildProfileChangesSendLogIntoChannel: 1n << 20n
   } as const,
 
   roles: {} as const
