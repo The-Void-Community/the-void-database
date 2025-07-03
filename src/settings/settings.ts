@@ -194,36 +194,39 @@ whenGuildProfileChangesSendLogIntoChannel: 1n << 20n
   roles: {} as const
 } as const;
 // ## { COMPILED__WRITE_COMPILED_HERE } ## \\
-  // ## COMPILED__WRITE_VALUES_HERE ## \\
+  // ## { COMPILED__WRITE_VALUES_HERE } ## \\
 
-  export type IConfig = {
-    users: [test_one: unknown, test_two: unknown];
-    guild: [
-      when_user_join_into_guild_send_message_to_user: unknown,
-      when_user_leave_from_guild_send_message_to_user: unknown,
-      when_user_join_into_guild_send_hello_message_to_channel: unknown,
-      when_user_leave_from_guild_send_goodbye_message_to_channel: unknown,
-      when_user_join_into_guild_grant_roles: unknown,
-    ];
-    logging: [
-      when_bot_join_into_guild_send_log_into_channel: unknown,
-      when_bot_leave_from_guild_send_log_into_channel: unknown,
-      when_user_join_into_guild_send_log_into_channel: unknown,
-      when_user_leave_from_guild_send_log_into_channel: unknown,
-      when_message_was_sended_send_log_into_channel: unknown,
-      when_message_was_changed_send_log_into_channel: unknown,
-      when_message_was_deleted_send_log_into_channel: unknown,
-      when_user_change_profile_send_log_into_channel: unknown,
-      when_user_change_activity_send_log_into_channel: unknown,
-      when_user_takes_mute_send_log_into_channel: unknown,
-      when_user_takes_ban_send_log_into_channel: unknown,
-      // when_roles_changes_at_user_send_log_into_channel: unknown,
-      when_guild_profile_changes_send_log_into_channel: unknown,
-    ];
-    roles: [test_three: unknown, test_four: unknown];
-  };
+export type IConfig = {
+  users: [],
+  guild: [
+    when_user_join_into_guild_send_message_to_user: unknown,
+    when_user_leave_from_guild_send_message_to_user: unknown,
+    when_user_join_into_guild_send_hello_message_to_channel: unknown,
+    when_user_leave_from_guild_send_goodbye_message_to_channel: unknown,
+    when_user_join_into_guild_grant_roles: unknown,
+    when_user_join_into_voice_create_voice_and_move_him: unknown
+  ],
+  logging: [
+    when_bot_join_into_guild_send_log_into_channel: unknown,
+    when_bot_leave_from_guild_send_log_into_channel: unknown,
+    when_user_join_into_guild_send_log_into_channel: unknown,
+    when_user_leave_from_guild_send_log_into_channel: unknown,
+    when_user_join_into_voice_send_log_into_channel: unknown,
+    when_user_leave_from_voice_send_log_into_channel: unknown,
+    when_message_was_sended_send_log_into_channel: unknown,
+    when_message_was_changed_send_log_into_channel: unknown,
+    when_message_was_deleted_send_log_into_channel: unknown,
+    when_user_change_profile_send_log_into_channel: unknown,
+    when_user_change_activity_send_log_into_channel: unknown,
+    when_user_takes_mute_send_log_into_channel: unknown,
+    when_user_takes_ban_send_log_into_channel: unknown,
+    when_roles_changes_at_user_send_log_into_channel: unknown,
+    when_guild_profile_changes_send_log_into_channel: unknown
+  ],
+  roles: []
+};
 
-  // ## COMPILED__WRITE_VALUES_HERE ## \\
+// ## { COMPILED__WRITE_VALUES_HERE } ## \\
   export namespace Raw {
     // ## { COMPILED__WRITE_EXPORT_HERE } ## \\
 

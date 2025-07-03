@@ -19,7 +19,7 @@ export interface IConfig {
     when_user_join_into_guild_grant_roles: ConfigurableMessage;
 
     /** channel id */
-    whenUserJoinIntoVoiceCreateVoiceAndMoveHim: string;
+    when_user_join_into_voice_create_voice_and_move_him: string;
   };
 
   logging: {
