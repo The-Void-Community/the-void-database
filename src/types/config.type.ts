@@ -1,6 +1,6 @@
 import type { Message as DiscordMessage } from "discord.js";
 
-export type Optional<Main, Default = null> = Main | Default;
+export type Optional<Main, Default = null | undefined> = Main | Default;
 
 export type ConfigurableMessage = {
   message: Optional<DiscordMessage<true>, string>;
@@ -12,14 +12,14 @@ export interface IConfig {
     /** roles id */
     when_user_join_into_guild_send_message_to_user: string[];
 
-    when_user_leave_from_guild_send_message_to_user: ConfigurableMessage;
-    when_user_join_into_guild_send_hello_message_to_channel: ConfigurableMessage;
+    when_user_leave_from_guild_send_message_to_user: Optional<ConfigurableMessage>;
+    when_user_join_into_guild_send_hello_message_to_channel: Optional<ConfigurableMessage>;
 
-    when_user_leave_from_guild_send_goodbye_message_to_channel: ConfigurableMessage;
-    when_user_join_into_guild_grant_roles: ConfigurableMessage;
+    when_user_leave_from_guild_send_goodbye_message_to_channel: Optional<ConfigurableMessage>;
+    when_user_join_into_guild_grant_roles: Optional<ConfigurableMessage>;
 
     /** channel id */
-    when_user_join_into_voice_create_voice_and_move_him: string;
+    when_user_join_into_voice_create_voice_and_move_him: Optional<string>;
   };
 
   logging: {
