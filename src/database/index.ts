@@ -6,7 +6,7 @@ import {
   FindOptions,
   Model as Models,
   PickTypeInObject,
-  UpdateOptions
+  UpdateOptions,
 } from "../types/mongodb.types";
 
 import { Helpers } from "./helpers";
@@ -14,6 +14,8 @@ import { IResponse } from "../types/status.type";
 
 export { SCHEMAS, KEYS, MODELS, DATABASE_DATA } from "./schemas";
 export { Helpers } from "./helpers";
+
+const TIME_OFFSET = 1751879986000 as const;
 
 export class Database<T extends { id: string }, K = Partial<T>> {
   private readonly _model: Model<T>;
@@ -33,24 +35,22 @@ export class Database<T extends { id: string }, K = Partial<T>> {
   public static parse = <T extends { id: string }>(data: T, type: Models): T =>
     Helpers.parse<T>(data, type);
 
+  public static generateId = (): string => {
+    return (new Date().getTime() - TIME_OFFSET).toString();
+  };
+
   public findLast = async (): Promise<Readonly<T>> => {
     return (await this._model.findOne(
       {},
       {},
-      { sort: { "created_at": -1 }, new: true }
+      { sort: { created_at: -1 }, new: true },
     ))!;
-  };
-
-  public generateId = async (): Promise<string> => {
-    const id = await this._model.countDocuments();
-
-    return `${(id === 0 ? 0 : +(await this.findLast()).id) + 1}`;
   };
 
   public create = async (doc: CreateData<T> & K) => {
     return await this._model.create({
       ...doc,
-      id: await this.id
+      id: Database.generateId(),
     });
   };
 
@@ -64,8 +64,8 @@ export class Database<T extends { id: string }, K = Partial<T>> {
   }) => {
     const data = await this._model.updateOne(options.filter, {
       $push: {
-        ...(options.update as any)
-      }
+        ...(options.update as any),
+      },
     });
 
     return data;
@@ -90,10 +90,6 @@ export class Database<T extends { id: string }, K = Partial<T>> {
   public static deleteModel = (name: string) => {
     return Helpers.deleteModel(name);
   };
-
-  get id(): Promise<string> {
-    return this.generateId();
-  }
 }
 
 export default Database;
