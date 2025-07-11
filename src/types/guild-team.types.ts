@@ -10,4 +10,4 @@ export interface ITeam {
   roles: Map<string, string>;
   /** channelId[] */
   channels: Array<string>;
-};
+}

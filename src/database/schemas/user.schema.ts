@@ -8,7 +8,7 @@ const data: SchemaParameters<IUser> = {
   id: {
     type: mongoose.SchemaTypes.String,
     required: true,
-    unique: true
+    unique: true,
   },
 
   avatar_url: { type: SchemaTypes.String, required: false, unique: false },
@@ -19,11 +19,15 @@ const data: SchemaParameters<IUser> = {
 
   guilds: {
     type: [SchemaTypes.String],
-    required: true
+    required: true,
   },
 
-  settings: { type: SchemaTypes.String, unique: false, default: Settings.CONSTANTS.raw.available.users.toString() },
-  config: { default: {} }
+  settings: {
+    type: SchemaTypes.String,
+    unique: false,
+    default: Settings.CONSTANTS.raw.available.users.toString(),
+  },
+  config: { default: {} },
 };
 const keys = Object.keys(data);
 const schema = new Schema<IUser>(data);

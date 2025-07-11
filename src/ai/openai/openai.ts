@@ -34,7 +34,7 @@ export default class Ai {
         model: data.model || this._model,
         ...data,
         messages: [
-          ...developerParams,
+          // ...developerParams,
           ...(typeof message === "string" ? [message] : message).map((msg) => {
             return { role: this._role.user, content: msg };
           }),

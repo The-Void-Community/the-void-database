@@ -7,31 +7,31 @@ const data: SchemaParameters<ITeam> = {
   id: {
     type: mongoose.SchemaTypes.String,
     required: true,
-    unique: true
+    unique: true,
   },
 
   name: {
     type: mongoose.SchemaTypes.String,
     required: true,
-    unique: true
+    unique: true,
   },
 
   owner_id: {
     type: mongoose.SchemaTypes.String,
-    required: true
+    required: true,
   },
 
   members: {
     type: mongoose.SchemaTypes.Map,
-    required: true
+    required: true,
   },
 
   roles: {
     type: mongoose.SchemaTypes.Map,
-    required: true
+    required: true,
   },
 
-  channels: mongoose.SchemaTypes.Array
+  channels: mongoose.SchemaTypes.Array,
 };
 const keys = Object.keys(data);
 const schema = new Schema<ITeam>(data);

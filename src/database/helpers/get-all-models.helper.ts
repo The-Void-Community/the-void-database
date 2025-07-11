@@ -8,7 +8,7 @@ const getAllModels = async (): Promise<IResponse<Model[], any>> => {
     const data = mongoose.modelNames() as Model[];
 
     if (!data) {
-      return new SelfError("Возможно, таблиц не существует.", { resource: [] })
+      return new SelfError("Возможно, таблиц не существует.", { resource: [] });
     }
 
     return new SelfStatus(data, "Таблицы были найдены.");

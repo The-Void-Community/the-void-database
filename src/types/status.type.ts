@@ -13,21 +13,21 @@ export type IResponse<T, K = null> = {
     }
 );
 
-export class SelfError<T=null> {
+export class SelfError<T = null> {
   public readonly successed: false = false;
   public readonly error: Error;
-  public readonly resource: T|null;
+  public readonly resource: T | null;
   public readonly text: string;
 
   public constructor(
-    error: Error|string,
+    error: Error | string,
     data?: {
-      resource?: T,
-      text?: string
-    } 
+      resource?: T;
+      text?: string;
+    },
   ) {
     this.error = typeof error === "string" ? new Error(error) : error;
-    
+
     if (data) {
       this.text = data.text || this.error.message;
       this.resource = data.resource || null;
@@ -36,7 +36,7 @@ export class SelfError<T=null> {
       this.resource = null;
     }
   }
-};
+}
 
 export class SelfStatus<T> {
   public readonly successed: true = true;
@@ -45,11 +45,8 @@ export class SelfStatus<T> {
   public readonly text: string;
   public readonly resource: T;
 
-  public constructor(
-    resource: T,
-    text: string
-  ) {
+  public constructor(resource: T, text: string) {
     this.resource = resource;
     this.text = text;
   }
-};
+}

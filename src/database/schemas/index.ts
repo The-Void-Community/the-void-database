@@ -7,21 +7,21 @@ const KEYS = {
   auth: AuthKeys,
   user: UserKeys,
   guild: GuildKeys,
-  team: TeamKeys
+  team: TeamKeys,
 } as const;
 
 const SCHEMAS = {
   auth: AuthSchema,
   user: UserSchema,
   guild: GuildSchema,
-  team: TeamSchema
+  team: TeamSchema,
 } as const;
 
 const MODELS = {
   Auth,
   User,
   Guild,
-  Team
+  Team,
 } as const;
 
 const DATABASE_DATA = Object.keys(KEYS) as (keyof typeof KEYS)[];

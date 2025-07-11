@@ -7,41 +7,41 @@ const data: SchemaParameters<IAuthUser> = {
   id: {
     type: mongoose.SchemaTypes.String,
     required: true,
-    unique: true
+    unique: true,
   },
 
   service_id: {
     type: mongoose.SchemaTypes.String,
     required: true,
-    unique: true
+    unique: true,
   },
 
   created_at: {
     type: mongoose.SchemaTypes.String,
     required: true,
-    unique: false
+    unique: false,
   },
 
   profile_id: {
     type: mongoose.SchemaTypes.String,
     required: true,
-    unique: false
+    unique: false,
   },
 
   access_token: {
     type: mongoose.SchemaTypes.String,
-    required: true
+    required: true,
   },
 
   refresh_token: {
     type: mongoose.SchemaTypes.String,
-    required: false
+    required: false,
   },
 
   type: {
     type: mongoose.SchemaTypes.String,
-    required: true
-  }
+    required: true,
+  },
 };
 const keys = Object.keys(data);
 const schema = new Schema<IAuthUser>(data);

@@ -7,7 +7,7 @@ import type {
   QueryOptions,
   Require_id,
   UpdateQuery,
-  UpdateWithAggregationPipeline
+  UpdateWithAggregationPipeline,
 } from "mongoose";
 
 import { SCHEMAS } from "../database";
@@ -47,7 +47,7 @@ export type RemoveNever<T> = CleanedObject<{
 export type PickType<T, K = any[]> = T extends K ? T : never;
 export type PickTypeInObject<
   T extends { [key: string]: any },
-  K = any[]
+  K = any[],
 > = RemoveNever<Required<{ [P in keyof T]: PickType<T[P], K> }>>;
 
 export type SchemaParameters<T> = ConstructorParameters<

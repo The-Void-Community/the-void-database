@@ -5,13 +5,13 @@ import { IResponse, SelfError, SelfStatus } from "../../types/status.type";
 
 const getData = async <T>(
   Model: ModelType<T>,
-  options: FindOptions<T>
+  options: FindOptions<T>,
 ): Promise<IResponse<T[], any>> => {
   try {
     const data = await Model.find(
       options.filter,
       options.projection,
-      options.options
+      options.options,
     );
 
     if (!data || data.length === 0) {
