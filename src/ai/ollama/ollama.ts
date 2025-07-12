@@ -68,6 +68,7 @@ export class Ollama {
           model: REQUEST.model,
           options: REQUEST.options,
           ...promt,
+          messages: [...params, ...(promt.messages || [])],
           stream: false,
         })
         .then((data) => resolve({ content: data.message.content, data }))
@@ -84,6 +85,7 @@ export class Ollama {
       model: REQUEST.model,
       options: REQUEST.options,
       ...promt,
+      messages: [...params, ...(promt.messages || [])],
       stream: true,
     });
   }
