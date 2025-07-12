@@ -1,7 +1,7 @@
 import { Ollama as OllamaAi } from "ollama";
 import type { ChatRequest, ChatResponse, Message } from "ollama";
 
-import { settings } from "../types/settings.type";
+import { settings, lafSettings } from "../types/settings.type";
 
 export const REQUEST: ChatRequest = {
   model: "gemma3:12b",
@@ -17,6 +17,17 @@ export const developerParams: Message[] = Object.keys(settings).map((k) => {
     content: (settings as { [key: string]: string })[k],
   };
 });
+export const developerLafParams: Message[] = Object.keys(lafSettings).map(
+  (k) => {
+    return <Message>{
+      model: REQUEST.model,
+      role: "developer",
+      content: (lafSettings as { [key: string]: string })[k],
+    };
+  },
+);
+
+const params = [...developerParams, ...developerLafParams];
 
 export class Ollama {
   private stringChat(
@@ -27,7 +38,7 @@ export class Ollama {
         .chat({
           model: REQUEST.model,
           stream: false,
-          messages: [...developerParams, { role: ROLE, content: promt }],
+          messages: [...params, { role: ROLE, content: promt }],
         })
         .then((data) =>
           resolve({ content: data.message.content, data } as const),
@@ -40,7 +51,7 @@ export class Ollama {
     return ollama.chat({
       model: REQUEST.model,
       stream: true,
-      messages: [...developerParams, { role: ROLE, content: promt }],
+      messages: [...params, { role: ROLE, content: promt }],
     });
   }
 
