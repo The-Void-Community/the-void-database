@@ -24,7 +24,7 @@ const data: SchemaParameters<IGuild> = {
 
   icon_url: {
     type: mongoose.SchemaTypes.String,
-    required: true,
+    required: false,
   },
 
   created_at: {
