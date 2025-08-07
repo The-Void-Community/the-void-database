@@ -7,6 +7,13 @@ export interface ICreateGuild {
   members: string[];
 }
 
+export interface ICardGuild {
+  id: string;
+  name: string;
+  icon_url: string | null;
+  banner_url: string | null;
+}
+
 export interface IGuild {
   id: string;
   name: string;
